@@ -1,7 +1,9 @@
-# SOV Business Launch System — Build Tracker
+# TTMerchant — Build Tracker
 
-**Project**: Shop868 / SOV Business Onboarding
-**Location**: `C:\AI_WORKSPACE\01_PRODUCTS\WEB_APPS\mom-and-pops-shop`
+**Project**: TTMerchant (T&T Business Onboarding)
+**Location**: `C:\AI_WORKSPACE\01_PRODUCTS\WEB_APPS\ttmerchant`
+**Repo**: `shanethabossS/ttMerchant`
+**Vercel**: `ttmerchant.vercel.app`
 **API Backend**: `api.sovdigitalgroup.com/api/shop868/*` (Express + VPS Postgres)
 **Auth**: Central SOV Auth via proxy routes (HttpOnly cookies)
 **Stack**: Next.js 16, TailwindCSS, TypeScript, mobile-first
