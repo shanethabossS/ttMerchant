@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { rateCheck, clientIp } from '@/lib/auth-rate-limit';
+import { findLocalUserByEmail } from '@/lib/intake/store';
 
 const FALLBACK_API_BASE = 'https://api.sovdigitalgroup.com';
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
+const SECURE_COOKIE = process.env.NODE_ENV === 'production';
 
 function getApiBase(): string {
   const raw = String(process.env.API_SERVER_URL || process.env.NEXT_PUBLIC_API_URL || '').trim().replace(/\/$/, '');
@@ -47,17 +49,22 @@ export async function POST(req: NextRequest) {
     if (!upstream.ok) return NextResponse.json(data, { status: upstream.status });
 
     const res = NextResponse.json(data, { status: upstream.status });
-
     if (typeof data.token === 'string' && data.token) {
-      res.cookies.set('auth_token', data.token, { httpOnly: true, secure: true, sameSite: 'lax', maxAge: COOKIE_MAX_AGE, path: '/' });
-      res.cookies.set('auth_state', '1', { httpOnly: false, secure: true, sameSite: 'lax', maxAge: COOKIE_MAX_AGE, path: '/' });
+      res.cookies.set('auth_token', data.token, { httpOnly: true, secure: SECURE_COOKIE, sameSite: 'lax', maxAge: COOKIE_MAX_AGE, path: '/' });
+      res.cookies.set('auth_state', '1', { httpOnly: false, secure: SECURE_COOKIE, sameSite: 'lax', maxAge: COOKIE_MAX_AGE, path: '/' });
       if (typeof data.refresh_token === 'string' && data.refresh_token) {
-        res.cookies.set('refresh_token', data.refresh_token, { httpOnly: true, secure: true, sameSite: 'lax', maxAge: COOKIE_MAX_AGE * 4, path: '/' });
+        res.cookies.set('refresh_token', data.refresh_token, { httpOnly: true, secure: SECURE_COOKIE, sameSite: 'lax', maxAge: COOKIE_MAX_AGE * 4, path: '/' });
       }
     }
-
     return res;
   } catch {
-    return NextResponse.json({ error: 'Auth service unavailable' }, { status: 503 });
+    const user = findLocalUserByEmail(String(body.email || ''));
+    if (!user || user.password !== String(body.password || '')) {
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+    }
+    const token = `local_${user.id}`;
+    const res = NextResponse.json({ token, user_id: user.id, email: user.email, full_name: user.full_name }, { status: 200 });
+    res.cookies.set('auth_token', token, { httpOnly: true, secure: SECURE_COOKIE, sameSite: 'lax', maxAge: COOKIE_MAX_AGE, path: '/' });
+    return res;
   }
 }

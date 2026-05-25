@@ -24,28 +24,21 @@ export function MobileMenu() {
       {open && (
         <div className="absolute left-0 right-0 top-full z-40 border-b border-border bg-background shadow-lg">
           <div className="container mx-auto flex flex-col gap-1 px-4 py-4">
-            <Link href="/stores" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">
-              Browse stores
-            </Link>
-            <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">
-              Merchant dashboard
-            </Link>
-
+            <Link href="/join/business" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Business signup</Link>
+            <Link href="/join/driver" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Driver signup</Link>
+            <Link href="/admin" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Admin queue</Link>
             <div className="my-2 border-t border-border" />
 
             {!loading && user ? (
               <div className="flex flex-col gap-2 px-3">
-                <span className="truncate text-xs font-semibold text-muted-foreground">
-                  {user.full_name || user.email}
-                </span>
-                <Button variant="outline" size="sm" onClick={() => { setOpen(false); logout(); }}>
-                  Sign out
-                </Button>
+                <span className="truncate text-xs font-semibold text-muted-foreground">{user.full_name || user.email}</span>
+                <Button variant="outline" size="sm" onClick={() => { setOpen(false); logout(); }}>Sign out</Button>
               </div>
             ) : !loading ? (
-              <Link href="/login" onClick={() => setOpen(false)} className="rounded-lg bg-primary px-3 py-2.5 text-center text-sm font-bold text-primary-foreground transition hover:bg-primary/90">
-                Sign in
-              </Link>
+              <div className="flex gap-2">
+                <Link href="/login" onClick={() => setOpen(false)} className="rounded-lg border border-border px-3 py-2.5 text-center text-sm font-bold">Sign in</Link>
+                <Link href="/signup" onClick={() => setOpen(false)} className="rounded-lg bg-primary px-3 py-2.5 text-center text-sm font-bold text-primary-foreground">Get started</Link>
+              </div>
             ) : null}
           </div>
         </div>

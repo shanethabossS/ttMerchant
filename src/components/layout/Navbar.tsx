@@ -5,6 +5,7 @@ import { ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/auth-context';
 import { MobileMenu } from './MobileMenu';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export function Navbar() {
   const { user, loading, logout } = useAuth();
@@ -14,81 +15,62 @@ export function Navbar() {
       <div className="sov-network-bar">
         <span className="sov-network-label">SOV Network</span>
         <div className="sov-network-chips">
-          <a href="https://ttclassifieds.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#00b7ff', display: 'inline-block', flexShrink: 0 }} />
-            TTClassifieds
-          </a>
-          <a href="https://fixnowtt.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#12b886', display: 'inline-block', flexShrink: 0 }} />
-            FixNowTT
-          </a>
-          <a href="https://findworktt.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4f46e5', display: 'inline-block', flexShrink: 0 }} />
-            FindWorkTT
-          </a>
-          <a href="https://rentmett.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f97316', display: 'inline-block', flexShrink: 0 }} />
-            RentMeTT
-          </a>
-          <a href="https://showlovett.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ec4899', display: 'inline-block', flexShrink: 0 }} />
-            ShowLoveTT
-          </a>
-          <a href="https://talkfreett.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#a855f7', display: 'inline-block', flexShrink: 0 }} />
-            TalkFreeTT
-          </a>
-          <span className="sov-network-chip sov-network-chip-current">
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4f46e5', display: 'inline-block', flexShrink: 0 }} />
-            TTMerchant
-          </span>
+          <a href="https://admin.sovdigitalgroup.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">Admin</a>
+          <a href="https://api.sovdigitalgroup.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">API</a>
+          <span className="sov-network-chip sov-network-chip-current">SOV Connect</span>
         </div>
       </div>
 
       <div className="container mx-auto flex min-h-16 items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex min-w-0 items-center gap-3">
           <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-black text-primary-foreground">
-            TM
+            SOV
           </span>
           <span className="min-w-0">
-            <span className="block truncate text-xl font-black tracking-tight">TTMerchant</span>
+            <span className="block truncate text-xl font-black tracking-tight">Connect</span>
             <span className="hidden text-xs font-medium text-muted-foreground sm:block">
-              Powered by Sovereign Digital Group Limited
+              Business & Driver Onboarding
             </span>
           </span>
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          <Link href="/stores" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
-            Browse stores
+          <Link href="/join/business" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Business
           </Link>
-          <Link href="/dashboard" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
-            Merchant
+          <Link href="/join/driver" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Driver
+          </Link>
+          <Link href="/admin" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Admin
           </Link>
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
-          <div className="hidden items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-800 lg:flex">
+          <ThemeToggle />
+          <div className="hidden items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold text-blue-800 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300 lg:flex">
             <ShieldCheck className="size-3.5" />
-            Merchant tools
+            Secure
           </div>
           {!loading && user ? (
             <div className="flex items-center gap-2">
-              <span className="max-w-[160px] truncate rounded-full border border-border bg-muted/60 px-3 py-1.5 text-xs font-semibold">
+              <span className="max-w-[170px] truncate rounded-full border border-border bg-muted/60 px-3 py-1.5 text-xs font-semibold">
                 {user.full_name || user.email}
               </span>
-              <Button variant="outline" size="sm" onClick={logout}>
-                Sign out
-              </Button>
+              <Button variant="outline" size="sm" onClick={logout}>Sign out</Button>
             </div>
           ) : !loading ? (
-            <Link href="/login">
-              <Button>Sign in</Button>
-            </Link>
+            <div className="flex gap-2">
+              <Link href="/login"><Button variant="outline" size="sm">Sign in</Button></Link>
+              <Link href="/signup"><Button size="sm">Get started</Button></Link>
+            </div>
           ) : null}
         </div>
 
-        <MobileMenu />
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <MobileMenu />
+        </div>
       </div>
     </nav>
   );

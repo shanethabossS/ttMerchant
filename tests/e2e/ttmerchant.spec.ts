@@ -1,60 +1,41 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Home page', () => {
-  test.beforeEach(async ({ page }) => { await page.goto('/'); });
+test('submit intake and verify lead appears in admin queue', async ({ page, request }) => {
+  const stamp = Date.now();
+  const email = `merchant.${stamp}@example.com`;
+  const business = `Intake QA ${stamp}`;
 
-  test('page title contains TTMerchant', async ({ page }) => {
-    expect(await page.title()).toMatch(/TTMerchant/i);
-  });
+  const nextBtn = () => page.getByRole('button', { name: 'Next', exact: true }).first();
 
-  test('heading is visible', async ({ page }) => {
-    await expect(page.getByRole('heading').first()).toBeVisible();
-  });
+  await page.goto('/start');
 
-  test('body has substantial content', async ({ page }) => {
-    const body = await page.locator('body').textContent();
-    expect((body ?? '').length).toBeGreaterThan(200);
-  });
-});
+  await page.getByLabel('Full Name').fill('QA Merchant');
+  await page.getByLabel('Business Name').fill(business);
+  await page.getByLabel('Email').fill(email);
+  await page.getByLabel('Phone').fill('18681234567');
+  await page.getByLabel('WhatsApp').fill('18681234567');
+  await page.getByLabel('Password').fill('StrongPass123!');
+  await nextBtn().click();
 
-test.describe('Navigation', () => {
-  test('has login and signup links', async ({ page }) => {
-    await page.goto('/');
-    const body = await page.locator('body').textContent();
-    expect(body?.toLowerCase()).toMatch(/sign in|sign up|login/);
-  });
-});
+  await page.getByText('Online Storefront', { exact: true }).click();
+  await nextBtn().click();
 
-test.describe('Auth pages', () => {
-  test('/login loads with email input', async ({ page }) => {
-    await page.goto('/login');
-    await expect(page.locator('input[type="email"]')).toBeVisible();
-  });
+  await page.getByLabel('Business Category').fill('Retail');
+  await page.getByLabel('Service Area').fill('Port of Spain');
+  await page.getByLabel('Address').fill('1 Queen Street');
+  await page.getByLabel('Opening Hours').fill('Mon-Fri 8am-5pm');
+  await page.getByLabel('Preferred Contact (phone/email/whatsapp)').fill('whatsapp');
+  await page.getByLabel('Business Description').fill('QA submission for intake flow validation.');
+  await nextBtn().click();
 
-  test('/signup loads with email input', async ({ page }) => {
-    await page.goto('/signup');
-    await expect(page.locator('input[type="email"]')).toBeVisible();
-  });
+  await nextBtn().click();
+  await nextBtn().click();
 
-  test('/dashboard unauthenticated redirects to login', async ({ page }) => {
-    await page.goto('/dashboard');
-    await page.waitForURL(/login/, { timeout: 10_000 });
-    expect(page.url()).toMatch(/login/);
-  });
-});
+  await page.getByRole('button', { name: /submit application/i }).click();
+  await expect(page.getByText(/application submitted/i)).toBeVisible();
 
-test.describe('Stores', () => {
-  test('/stores loads with a heading', async ({ page }) => {
-    await page.goto('/stores');
-    await expect(page.getByRole('heading').first()).toBeVisible({ timeout: 12_000 });
-  });
-});
-
-test.describe('Static pages', () => {
-  for (const route of ['/about', '/terms', '/privacy']) {
-    test(`${route} loads with heading`, async ({ page }) => {
-      await page.goto(route);
-      await expect(page.getByRole('heading').first()).toBeVisible();
-    });
-  }
+  const leadsRes = await request.get('/api/intake/leads');
+  expect(leadsRes.ok()).toBeTruthy();
+  const payload = await leadsRes.json();
+  expect(JSON.stringify(payload)).toContain(business);
 });

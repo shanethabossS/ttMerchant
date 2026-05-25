@@ -28,7 +28,7 @@ export async function apiFetch<T = unknown>(
     }
 
     return { data, error: null, status: res.status };
-  } catch (err) {
+  } catch {
     return { data: null, error: 'Network error', status: 0 };
   }
 }

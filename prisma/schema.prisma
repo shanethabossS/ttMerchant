@@ -159,3 +159,132 @@ model Transaction {
 
   @@map("transactions")
 }
+
+enum MerchantQueueStatus {
+  new_lead
+  awaiting_review
+  awaiting_customer_info
+  ready_to_publish
+  published
+  rejected
+}
+
+enum MerchantOnboardingStatus {
+  submitted
+  reviewing
+  approved
+  rejected
+  published
+}
+
+enum MerchantPaymentStatus {
+  pending
+  paid
+  failed
+  refunded
+}
+
+model MerchantLead {
+  id               String                   @id
+  userId           String?                  @map("user_id")
+  businessName     String                   @map("business_name")
+  category         String?
+  email            String
+  phone            String?
+  whatsappNumber   String?                  @map("whatsapp_number")
+  selectedServices Json                     @map("selected_services")
+  selectedPlan     String                   @default("starter") @map("selected_plan")
+  queueStatus      MerchantQueueStatus      @default(new_lead) @map("queue_status")
+  onboardingStatus MerchantOnboardingStatus @default(submitted) @map("onboarding_status")
+  paymentStatus    MerchantPaymentStatus    @default(pending) @map("payment_status")
+  createdAt        DateTime                 @default(now()) @map("created_at")
+  updatedAt        DateTime                 @updatedAt @map("updated_at")
+
+  intakeForms    MerchantIntakeForm[]
+  mediaUploads   MerchantMediaUpload[]
+  subscriptions  MerchantSubscription[]
+  notes          MerchantNote[]
+  queueHistory   MerchantQueueHistory[]
+
+  @@map("merchant_leads")
+}
+
+model MerchantIntakeForm {
+  id                     String   @id
+  leadId                 String   @map("lead_id")
+  businessCategory       String?  @map("business_category")
+  businessDescription    String?  @map("business_description")
+  address                String?
+  serviceArea            String?  @map("service_area")
+  openingHours           String?  @map("opening_hours")
+  deliveryAvailable      Boolean  @default(false) @map("delivery_available")
+  pickupAvailable        Boolean  @default(true) @map("pickup_available")
+  instagram              String?
+  facebook               String?
+  website                String?
+  preferredContactMethod String?  @map("preferred_contact_method")
+  createdAt              DateTime @default(now()) @map("created_at")
+  updatedAt              DateTime @updatedAt @map("updated_at")
+
+  lead MerchantLead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("merchant_intake_forms")
+}
+
+model MerchantMediaUpload {
+  id           String   @id
+  leadId       String   @map("lead_id")
+  fileName     String   @map("file_name")
+  fileType     String   @map("file_type")
+  fileSize     Int      @map("file_size")
+  assetUrl     String   @map("asset_url")
+  thumbnailUrl String?  @map("thumbnail_url")
+  uploadedAt   DateTime @default(now()) @map("uploaded_at")
+
+  lead MerchantLead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("merchant_media_uploads")
+}
+
+model MerchantSubscription {
+  id            String   @id
+  leadId        String   @map("lead_id")
+  selectedPlan  String   @map("selected_plan")
+  status        String
+  paymentStatus String   @default("pending") @map("payment_status")
+  startsAt      DateTime? @map("starts_at")
+  endsAt        DateTime? @map("ends_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  lead MerchantLead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("merchant_subscriptions")
+}
+
+model MerchantNote {
+  id          String   @id
+  leadId      String   @map("lead_id")
+  adminUserId String?  @map("admin_user_id")
+  note        String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  lead MerchantLead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("merchant_notes")
+}
+
+model MerchantQueueHistory {
+  id         String   @id
+  leadId     String   @map("lead_id")
+  fromStatus String?  @map("from_status")
+  toStatus   String   @map("to_status")
+  actionType String   @map("action_type")
+  actionBy   String?  @map("action_by")
+  payload    Json     @default("{}")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  lead MerchantLead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("merchant_queue_history")
+}

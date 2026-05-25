@@ -2,11 +2,11 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "shop868",
+      "name": "ttmerchant",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["next", "dev", "--port", "3007"],
-      "port": 3007,
-      "cwd": "C:\\AI_WORKSPACE\\01_PRODUCTS\\WEB_APPS\\mom-and-pops-shop"
+      "runtimeArgs": ["next", "dev", "--port", "3008"],
+      "port": 3008,
+      "cwd": "C:\\AI_WORKSPACE\\01_PRODUCTS\\WEB_APPS\\ttmerchant"
     }
   ]
 }

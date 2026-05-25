@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { findLocalUserById } from '@/lib/intake/store';
 
 const FALLBACK_API_BASE = 'https://api.sovdigitalgroup.com';
 
@@ -20,12 +21,16 @@ const CENTRAL_API = getApiBase();
 
 export async function GET(req: NextRequest) {
   const token = req.cookies.get('auth_token')?.value;
+  if (token?.startsWith('local_')) {
+    const localId = token.replace(/^local_/, '');
+    const user = findLocalUserById(localId);
+    if (!user) return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+    return NextResponse.json({ user_id: user.id, email: user.email, full_name: user.full_name, phone: user.phone }, { status: 200 });
+  }
+
   const fallbackHeader = req.headers.get('authorization');
   const authHeader = token ? `Bearer ${token}` : fallbackHeader;
-
-  if (!authHeader) {
-    return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
-  }
+  if (!authHeader) return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
 
   try {
     const upstream = await fetch(`${CENTRAL_API}/api/auth/me`, {
@@ -37,7 +42,6 @@ export async function GET(req: NextRequest) {
     const raw = await upstream.text();
     let data: Record<string, unknown> = {};
     try { data = raw ? JSON.parse(raw) : {}; } catch { data = { error: raw || upstream.statusText }; }
-
     return NextResponse.json(data, { status: upstream.status });
   } catch {
     return NextResponse.json({ error: 'Auth service unavailable' }, { status: 503 });
