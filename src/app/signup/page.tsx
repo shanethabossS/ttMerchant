@@ -41,7 +41,7 @@ export default function SignupPage() {
       <div className="w-full space-y-4 rounded-2xl border border-border bg-card p-6">
         <div className="text-center">
           <h1 className="text-2xl font-black tracking-tight">Create your account</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Join SOV Connect</p>
+          <p className="mt-1 text-sm text-muted-foreground">Join LaunchTT</p>
         </div>
 
         <Button

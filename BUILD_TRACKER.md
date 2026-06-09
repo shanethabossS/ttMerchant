@@ -1,9 +1,9 @@
-# SOV Connect — Build Tracker
+# LaunchTT — Build Tracker
 
-**Project**: SOV Connect (formerly TTMerchant — T&T Business & Driver Onboarding)
+**Project**: LaunchTT (formerly TTMerchant — T&T Business & Driver Onboarding)
 **Location**: `C:\AI_WORKSPACE\01_PRODUCTS\WEB_APPS\ttmerchant`
 **Repo**: `shanethabossS/ttMerchant`
-**Vercel**: `ttmerchant.vercel.app`
+**Vercel**: `launchtt.com`
 **API Backend**: `api.sovdigitalgroup.com/api/shop868/*` (Express + VPS Postgres)
 **Auth**: Central SOV Auth via proxy routes (HttpOnly cookies) + NextAuth Google OAuth
 **Stack**: Next.js 16, TailwindCSS, TypeScript, mobile-first, light/dark mode
@@ -25,9 +25,9 @@
 - [x] Merchant dashboard (stats, catalog CRUD, launch checklist)
 - [x] Public storefront (/store/[slug]) with SEO, products, deals, reviews, about tabs
 
-## Phase 1.5 — SOV Connect Rebrand + Driver Intake (Session 2, 2026-05-25)
+## Phase 1.5 — LaunchTT Rebrand + Driver Intake (Session 2, 2026-05-25)
 
-- [x] Rebranded from "Merchant Intake" → "SOV Connect"
+- [x] Rebranded from "Merchant Intake" → "LaunchTT"
 - [x] New landing page with two paths: Business + Driver
 - [x] Dark mode toggle (persisted to localStorage, respects system preference, no flash)
 - [x] Dark mode CSS variables (already existed, now wired up with toggle)
@@ -42,7 +42,7 @@
 - [x] Updated Navbar with theme toggle, new nav links (Business / Driver / Admin)
 - [x] Updated Footer with new branding + links
 - [x] Updated MobileMenu with new routes
-- [x] Updated metadata/SEO for SOV Connect branding
+- [x] Updated metadata/SEO for LaunchTT branding
 - [x] Build passes, all routes compiled
 
 ## Phase 2 — Growth
@@ -138,8 +138,8 @@
 - Set up auth system, landing page, login/signup, onboarding wizard
 - Built merchant dashboard and public storefront
 
-### Session 2 — SOV Connect Rebrand + Driver Intake (2026-05-25)
-- Rebranded entire app from "Merchant Intake" to "SOV Connect"
+### Session 2 — LaunchTT Rebrand + Driver Intake (2026-05-25)
+- Rebranded entire app from "Merchant Intake" to "LaunchTT"
 - New landing page with hero, stats, two-path cards (Business/Driver), benefits, CTA
 - Added dark mode: CSS vars (already existed), ThemeToggle component, anti-flash script in layout
 - Built DriverWizard (6 steps): personal info, vehicle/license, areas, availability/services, docs, review

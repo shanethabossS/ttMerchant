@@ -7,6 +7,10 @@ import { Footer } from '@/components/layout/Footer';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 const themeScript = `(function(){try{var t=localStorage.getItem('sov-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();`;
+const siteUrl = 'https://launchtt.com';
+const defaultTitle = 'LaunchTT | Done-For-You Online Launch · Trinidad & Tobago';
+const defaultDescription =
+  'We launch your business online — done for you. Website, online ordering, invoicing, booking, AI assistant, WhatsApp, payments and SEO — built and maintained by our team. Serving small businesses across Trinidad & Tobago.';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -19,16 +23,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'SOV Connect - Trinidad Business & Driver Onboarding',
-  description:
-    'The easiest way for Trinidad businesses and drivers to get online. Submit your info once — the SOV team handles the rest.',
-  openGraph: {
-    title: 'SOV Connect - Trinidad Business & Driver Onboarding',
-    description:
-      'Businesses and drivers submit details, SOV reviews, SOV publishes. Powered by Sovereign Digital Group.',
-    type: 'website',
-    siteName: 'SOV Connect',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: '%s | LaunchTT',
   },
+  description: defaultDescription,
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    title: defaultTitle,
+    description: defaultDescription,
+    url: siteUrl,
+    type: 'website',
+    siteName: 'LaunchTT',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  category: 'business',
 };
 
 export const viewport: Viewport = {
@@ -45,6 +72,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'LaunchTT',
+              url: siteUrl,
+              description: defaultDescription,
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <AuthProvider>

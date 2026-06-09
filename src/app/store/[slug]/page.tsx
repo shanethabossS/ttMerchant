@@ -1,5 +1,14 @@
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'Storefront Publishing Is Managed Internally',
+  description: 'LaunchTT reviews and publishes storefronts internally after submission.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default function LegacyStorefrontPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 text-center">

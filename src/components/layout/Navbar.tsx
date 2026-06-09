@@ -17,19 +17,19 @@ export function Navbar() {
         <div className="sov-network-chips">
           <a href="https://admin.sovdigitalgroup.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">Admin</a>
           <a href="https://api.sovdigitalgroup.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">API</a>
-          <span className="sov-network-chip sov-network-chip-current">SOV Connect</span>
+          <span className="sov-network-chip sov-network-chip-current">LaunchTT</span>
         </div>
       </div>
 
       <div className="container mx-auto flex min-h-16 items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-black text-primary-foreground">
-            SOV
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 text-base font-black text-white">
+            🚀
           </span>
           <span className="min-w-0">
-            <span className="block truncate text-xl font-black tracking-tight">Connect</span>
+            <span className="block truncate text-xl font-black tracking-tight">LaunchTT</span>
             <span className="hidden text-xs font-medium text-muted-foreground sm:block">
-              Business & Driver Onboarding
+              We launch your business — done for you
             </span>
           </span>
         </Link>

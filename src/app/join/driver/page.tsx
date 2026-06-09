@@ -1,7 +1,7 @@
 import { DriverWizard } from '@/components/intake/DriverWizard';
 
 export const metadata = {
-  title: 'Driver Signup - SOV Connect',
+  title: 'Driver Signup - LaunchTT',
   description: 'Join the SOV delivery and driver network in Trinidad & Tobago. Fast signup, flexible hours.',
 };
 

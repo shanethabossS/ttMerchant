@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     customerEmail
       ? sendEmail({
           to: customerEmail,
-          subject: 'SOV Connect - Driver Application Received',
+          subject: 'LaunchTT - Driver Application Received',
           text: `Hi ${String(body.full_name || 'there')}, your driver application was received. Application ID: ${app.id}. We'll be in touch within 24 hours.`,
         })
       : Promise.resolve({ skipped: true }),
