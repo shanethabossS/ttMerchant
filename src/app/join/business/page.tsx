@@ -1,8 +1,8 @@
 import { IntakeWizard } from '@/components/intake/IntakeWizard';
 
 export const metadata = {
-  title: 'Business Signup - LaunchTT',
-  description: 'Get your Trinidad business online in minutes. Free onboarding powered by Sovereign Digital Group.',
+  title: 'Business Signup for Trinidad and Tobago',
+  description: 'Create your LaunchTT business account and start onboarding for website design, ordering, bookings, and launch support in Trinidad and Tobago.',
 };
 
 export default async function BusinessJoinPage({

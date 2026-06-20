@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle2, FileBadge2, ShieldCheck, WalletCards } from 'lucide-react';
 
@@ -15,9 +16,24 @@ const benefits = [
   'Faster approvals for delivery and platform applications',
 ];
 
-export const metadata = {
-  title: 'KYC Verification',
-  description: 'Complete your LaunchTT KYC verification to unlock full SOV ecosystem access.',
+export const metadata: Metadata = {
+  title: 'KYC Verification for Trinidad and Tobago Users',
+  description: 'Complete your LaunchTT KYC verification to unlock full SOV ecosystem access, payments, and faster onboarding in Trinidad and Tobago.',
+  alternates: { canonical: '/kyc' },
+  keywords: [
+    'KYC Trinidad',
+    'business verification Trinidad',
+    'LaunchTT KYC',
+    'verify account Trinidad and Tobago',
+  ],
+  openGraph: {
+    title: 'LaunchTT KYC Verification',
+    description: 'Complete your LaunchTT KYC verification to unlock full SOV ecosystem access, payments, and faster onboarding.',
+    type: 'website',
+    url: 'https://launchtt.com/kyc',
+    locale: 'en_TT',
+    siteName: 'LaunchTT',
+  },
 };
 
 export default function KycPage() {

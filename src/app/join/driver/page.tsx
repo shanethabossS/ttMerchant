@@ -1,8 +1,8 @@
 import { DriverWizard } from '@/components/intake/DriverWizard';
 
 export const metadata = {
-  title: 'Driver Signup - LaunchTT',
-  description: 'Join the SOV delivery and driver network in Trinidad & Tobago. Fast signup, flexible hours.',
+  title: 'Delivery Driver Signup in Trinidad and Tobago',
+  description: 'Apply to drive with LaunchTT and the SOV delivery network in Trinidad and Tobago. Grouped deliveries, safer routes, and flexible work.',
 };
 
 export default function DriverJoinPage() {

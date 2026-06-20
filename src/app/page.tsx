@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -20,6 +21,48 @@ import {
 } from 'lucide-react';
 import { HomeStatusStrip } from '@/components/home/HomeStatusStrip';
 import { Button } from '@/components/ui/button';
+
+const SITE_URL = 'https://launchtt.com';
+const TITLE = 'LaunchTT | Website Design, Online Ordering and Business Setup in Trinidad and Tobago';
+const DESCRIPTION =
+  'LaunchTT helps Trinidad and Tobago businesses get online with websites, online ordering, bookings, invoicing, WhatsApp integration, SEO, and done-for-you launch support.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: '/' },
+  keywords: [
+    'website design Trinidad',
+    'website design Trinidad and Tobago',
+    'small business website Trinidad',
+    'online store Trinidad',
+    'food ordering website Trinidad',
+    'booking website Trinidad',
+    'business launch Trinidad',
+    'digital services Trinidad',
+    'get my business online Trinidad',
+    'WhatsApp ordering Trinidad',
+    'invoice system Trinidad',
+    'SEO services Trinidad',
+    'website for restaurant Trinidad',
+    'website for salon Trinidad',
+    'website for mechanic Trinidad',
+    'website for contractor Trinidad',
+  ],
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'website',
+    url: SITE_URL,
+    locale: 'en_TT',
+    siteName: 'LaunchTT',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
 
 const includedFeatures = [
   { icon: Globe, title: 'Website', desc: 'Branded online presence built for mobile, search, and trust from day one.' },
@@ -53,9 +96,85 @@ const stats = [
   { value: 'Done', label: 'For you' },
 ];
 
+const businessTypes = [
+  'Restaurants and food vendors',
+  'Salons and barbers',
+  'Mechanics and auto services',
+  'Contractors and tradesmen',
+  'Small shops and online sellers',
+  'Consultants and service professionals',
+];
+
+const serviceAreas = [
+  'Port of Spain',
+  'San Fernando',
+  'Chaguanas',
+  'Arima',
+  'Point Fortin',
+  'Tunapuna',
+  'Tobago',
+];
+
+const seoFaq = [
+  {
+    q: 'Can LaunchTT build a website for a Trinidad small business?',
+    a: 'Yes. LaunchTT is built for Trinidad and Tobago businesses that need a professional website, online ordering, bookings, and launch support without managing the tech themselves.',
+  },
+  {
+    q: 'Does LaunchTT help restaurants and food businesses in Trinidad?',
+    a: 'Yes. We support restaurants, food vendors, and caterers with menu setup, online ordering, WhatsApp integration, and launch support.',
+  },
+  {
+    q: 'What areas does LaunchTT serve?',
+    a: 'We work with businesses across Trinidad and Tobago, including Port of Spain, San Fernando, Chaguanas, Arima, Point Fortin, Tunapuna, and Tobago.',
+  },
+  {
+    q: 'Can LaunchTT help get my business found on Google in Trinidad?',
+    a: 'Yes. We include search-friendly page structure, metadata, indexing basics, and local business content so your business has a stronger chance of being discovered online.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${SITE_URL}/#launch-service`,
+      name: 'LaunchTT Business Setup Services',
+      serviceType: 'Website design, online ordering, business setup, SEO, bookings, invoicing',
+      description: DESCRIPTION,
+      provider: {
+        '@type': 'Organization',
+        name: 'LaunchTT',
+        url: SITE_URL,
+      },
+      areaServed: serviceAreas.map((area) => ({
+        '@type': 'AdministrativeArea',
+        name: area,
+      })),
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'Small businesses in Trinidad and Tobago',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: seoFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a,
+        },
+      })),
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HomeStatusStrip />
 
       <section className="relative overflow-hidden border-b border-border bg-gradient-to-br from-blue-50 via-background to-cyan-50 dark:from-blue-950/30 dark:via-background dark:to-cyan-950/20">
@@ -71,8 +190,8 @@ export default function HomePage() {
             </span>
           </h1>
           <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
-            LaunchTT is built for business owners who need a proper website, ordering setup, listings,
-            payments, and support without learning five different tools first.
+            LaunchTT is built for Trinidad and Tobago business owners who need a proper website, online ordering,
+            bookings, payments, and support without learning five different tools first.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/signup">
@@ -128,6 +247,46 @@ export default function HomePage() {
               <p className="mt-1.5 text-sm text-muted-foreground">{feature.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-muted/20">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-14 md:grid-cols-2 md:py-18">
+          <div>
+            <h2 className="text-3xl font-black tracking-tight md:text-4xl">Who we help in Trinidad and Tobago</h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              LaunchTT is especially useful for local businesses that need to move fast online without building an
+              in-house tech team first.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {businessTypes.map((type) => (
+                <div key={type} className="rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold">
+                  {type}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-3xl font-black tracking-tight md:text-4xl">Areas we serve</h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              We work with businesses across the country, from one-person operations to growing teams.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {serviceAreas.map((area) => (
+                <span
+                  key={area}
+                  className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-semibold text-blue-700 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+            <p className="mt-5 text-sm text-muted-foreground">
+              If you are searching for website design in Trinidad, online ordering in Trinidad and Tobago, or help getting
+              your business online, this is exactly what LaunchTT is built for.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -252,6 +411,25 @@ export default function HomePage() {
             </a>{' '}
             for a tailored quote.
           </p>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto w-full max-w-4xl px-4 py-14 md:py-18">
+          <div className="text-center">
+            <h2 className="text-3xl font-black tracking-tight md:text-4xl">Questions local businesses usually ask</h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              Short answers for the most common Trinidad-focused search questions around websites, ordering, and launch support.
+            </p>
+          </div>
+          <div className="mt-8 space-y-3">
+            {seoFaq.map((item) => (
+              <details key={item.q} className="rounded-2xl border border-border bg-card p-5">
+                <summary className="cursor-pointer text-left text-base font-bold">{item.q}</summary>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

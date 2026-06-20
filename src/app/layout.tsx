@@ -8,9 +8,23 @@ import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 const themeScript = `(function(){try{var t=localStorage.getItem('sov-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();`;
 const siteUrl = 'https://launchtt.com';
-const defaultTitle = 'LaunchTT | Done-for-you Online Launch | Trinidad and Tobago';
+const defaultTitle = 'LaunchTT | Website Design, Online Ordering and Business Setup in Trinidad and Tobago';
 const defaultDescription =
-  'We launch your business online, done for you. Websites, ordering, invoicing, booking, AI support, WhatsApp setup, payments, and search visibility for businesses across Trinidad and Tobago.';
+  'LaunchTT helps Trinidad and Tobago businesses get online with website design, online ordering, bookings, invoicing, WhatsApp integration, SEO, and launch support.';
+const defaultKeywords = [
+  'website design Trinidad',
+  'website design Trinidad and Tobago',
+  'small business website Trinidad',
+  'online store Trinidad',
+  'food ordering website Trinidad',
+  'booking website Trinidad',
+  'business launch Trinidad',
+  'digital services Trinidad',
+  'get my business online Trinidad',
+  'WhatsApp ordering Trinidad',
+  'invoice system Trinidad',
+  'SEO services Trinidad',
+];
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,6 +43,7 @@ export const metadata: Metadata = {
     template: '%s | LaunchTT',
   },
   description: defaultDescription,
+  keywords: defaultKeywords,
   alternates: {
     canonical: '/',
   },
@@ -49,6 +64,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     type: 'website',
     siteName: 'LaunchTT',
+    locale: 'en_TT',
   },
   twitter: {
     card: 'summary_large_image',
@@ -77,10 +93,53 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'LaunchTT',
-              url: siteUrl,
-              description: defaultDescription,
+              '@graph': [
+                {
+                  '@type': 'WebSite',
+                  '@id': `${siteUrl}/#website`,
+                  name: 'LaunchTT',
+                  url: siteUrl,
+                  description: defaultDescription,
+                  inLanguage: 'en-TT',
+                  areaServed: 'Trinidad and Tobago',
+                },
+                {
+                  '@type': 'Organization',
+                  '@id': `${siteUrl}/#organization`,
+                  name: 'LaunchTT',
+                  url: siteUrl,
+                  description: defaultDescription,
+                  areaServed: 'Trinidad and Tobago',
+                  parentOrganization: {
+                    '@type': 'Organization',
+                    name: 'Sovereign Digital Group Ltd',
+                    url: 'https://sovdigitalgroup.com',
+                  },
+                },
+                {
+                  '@type': 'LocalBusiness',
+                  '@id': `${siteUrl}/#localbusiness`,
+                  name: 'LaunchTT',
+                  url: siteUrl,
+                  description: defaultDescription,
+                  areaServed: [
+                    'Trinidad and Tobago',
+                    'Port of Spain',
+                    'San Fernando',
+                    'Chaguanas',
+                    'Arima',
+                    'Point Fortin',
+                    'Tunapuna',
+                    'Tobago',
+                  ],
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressCountry: 'TT',
+                    addressRegion: 'Trinidad and Tobago',
+                  },
+                  sameAs: ['https://sovdigitalgroup.com'],
+                },
+              ],
             }),
           }}
         />
