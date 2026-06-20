@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle2, FileBadge2, ShieldCheck, WalletCards } from 'lucide-react';
+import { buildFaqJsonLd } from '@/lib/seo/launchtt-pages';
 
 const requirements = [
   'Government-issued ID',
@@ -14,6 +15,17 @@ const benefits = [
   'Payments, invoicing, and payout features',
   'Priority onboarding for LaunchTT projects',
   'Faster approvals for delivery and platform applications',
+];
+
+const faq = [
+  {
+    q: 'Why do I need KYC on LaunchTT?',
+    a: 'KYC helps unlock fuller ecosystem access, payments, onboarding features, and stronger trust across the SOV network.',
+  },
+  {
+    q: 'Can business users in Trinidad and Tobago complete KYC through LaunchTT?',
+    a: 'Yes. LaunchTT uses KYC as part of the trust and onboarding layer for users and businesses in Trinidad and Tobago.',
+  },
 ];
 
 export const metadata: Metadata = {
@@ -37,8 +49,28 @@ export const metadata: Metadata = {
 };
 
 export default function KycPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': 'https://launchtt.com/kyc#service',
+        name: 'LaunchTT KYC Verification',
+        serviceType: 'Identity and business verification',
+        description: metadata.description,
+        provider: {
+          '@type': 'Organization',
+          name: 'LaunchTT',
+          url: 'https://launchtt.com',
+        },
+      },
+      buildFaqJsonLd(faq),
+    ],
+  };
+
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-10 md:py-14">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300">
@@ -112,6 +144,15 @@ export default function KycPage() {
               Ask on WhatsApp
             </a>
           </div>
+        </div>
+
+        <div className="mt-8 space-y-3">
+          {faq.map((item) => (
+            <details key={item.q} className="rounded-2xl border border-border bg-muted/20 p-5">
+              <summary className="cursor-pointer text-left text-base font-bold">{item.q}</summary>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
+            </details>
+          ))}
         </div>
       </div>
     </div>

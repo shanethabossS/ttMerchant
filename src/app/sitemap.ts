@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { LAUNCHTT_LOCATION_PAGES, LAUNCHTT_SERVICE_PAGES } from '@/lib/seo/launchtt-pages';
 
 const baseUrl = 'https://launchtt.com';
 
@@ -42,6 +43,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    ...LAUNCHTT_SERVICE_PAGES.map((service) => ({
+      url: `${baseUrl}/services/${service.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.75,
+    })),
+    {
+      url: `${baseUrl}/locations`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.75,
+    },
+    ...LAUNCHTT_LOCATION_PAGES.map((location) => ({
+      url: `${baseUrl}/locations/${location.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
     {
       url: `${baseUrl}/join/business`,
       lastModified: now,
