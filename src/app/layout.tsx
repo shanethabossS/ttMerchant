@@ -2,15 +2,15 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/lib/auth-context';
-import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { Navbar } from '@/components/layout/Navbar';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 const themeScript = `(function(){try{var t=localStorage.getItem('sov-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();`;
 const siteUrl = 'https://launchtt.com';
-const defaultTitle = 'LaunchTT | Done-For-You Online Launch · Trinidad & Tobago';
+const defaultTitle = 'LaunchTT | Done-for-you Online Launch | Trinidad and Tobago';
 const defaultDescription =
-  'We launch your business online — done for you. Website, online ordering, invoicing, booking, AI assistant, WhatsApp, payments and SEO — built and maintained by our team. Serving small businesses across Trinidad & Tobago.';
+  'We launch your business online, done for you. Websites, ordering, invoicing, booking, AI support, WhatsApp setup, payments, and search visibility for businesses across Trinidad and Tobago.';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -85,10 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <AuthProvider>
           <Navbar />
-          <main className="flex-1 flex flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
           <ServiceWorkerRegister />
         </AuthProvider>

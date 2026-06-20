@@ -25,7 +25,16 @@ export async function GET(req: NextRequest) {
     const localId = token.replace(/^local_/, '');
     const user = findLocalUserById(localId);
     if (!user) return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
-    return NextResponse.json({ user_id: user.id, email: user.email, full_name: user.full_name, phone: user.phone }, { status: 200 });
+    return NextResponse.json(
+      {
+        user_id: user.id,
+        email: user.email,
+        full_name: user.full_name,
+        phone: user.phone,
+        kyc_status: 'unverified',
+      },
+      { status: 200 }
+    );
   }
 
   const fallbackHeader = req.headers.get('authorization');

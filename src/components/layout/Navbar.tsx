@@ -51,14 +51,9 @@ export function Navbar() {
           <Link href="/drive" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             Delivery Service
           </Link>
-          <a
-            href="https://sovdigitalgroup.com/kyc"
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm font-semibold text-muted-foreground transition hover:text-foreground"
-          >
+          <Link href="/kyc" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             KYC
-          </a>
+          </Link>
           <Link href="/signup" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             Sign up
           </Link>
@@ -82,6 +77,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
+          {!loading && user ? <UserDashboardAccordion compact /> : null}
           <MobileMenu />
         </div>
       </div>

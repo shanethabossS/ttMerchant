@@ -56,6 +56,38 @@ function formatProjectStatus(status?: string) {
   return String(status || 'active').replace(/_/g, ' ');
 }
 
+function getAccessMeta(kyc: KycStatus, live: boolean) {
+  if (!live) {
+    return {
+      label: 'Coming soon',
+      dot: 'bg-slate-400',
+      tone: 'border-border bg-muted/30 text-muted-foreground',
+    };
+  }
+
+  if (kyc === 'verified') {
+    return {
+      label: 'Verified access',
+      dot: 'bg-emerald-500',
+      tone: 'border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300',
+    };
+  }
+
+  if (kyc === 'pending') {
+    return {
+      label: 'Pending review',
+      dot: 'bg-amber-500',
+      tone: 'border-amber-500/20 bg-amber-500/10 text-amber-700 dark:text-amber-300',
+    };
+  }
+
+  return {
+    label: 'Browse only',
+    dot: 'bg-blue-500',
+    tone: 'border-blue-500/20 bg-blue-500/10 text-blue-700 dark:text-cyan-300',
+  };
+}
+
 export function UserDashboardPanel({ onNavigate }: { onNavigate?: () => void }) {
   const { user } = useAuth();
   const [project, setProject] = useState<Project | null>(null);
@@ -100,9 +132,7 @@ export function UserDashboardPanel({ onNavigate }: { onNavigate?: () => void }) 
         </div>
         {!verified ? (
           <Link
-            href="https://sovdigitalgroup.com/kyc"
-            target="_blank"
-            rel="noreferrer"
+            href="/kyc"
             className="mt-1.5 flex items-center justify-end gap-1 text-xs font-semibold text-blue-600 hover:underline dark:text-cyan-300"
             onClick={onNavigate}
           >
@@ -114,25 +144,40 @@ export function UserDashboardPanel({ onNavigate }: { onNavigate?: () => void }) 
       <div>
         <p className="mb-1.5 text-[0.65rem] font-bold uppercase tracking-widest text-muted-foreground">Your ecosystem access</p>
         <div className="grid grid-cols-2 gap-1.5">
-          {SOV_LIVE_SITES.map((site) => (
-            <a
-              key={site.slug}
-              href={site.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={onNavigate}
-              className="flex items-center justify-between gap-1.5 rounded-md border border-border bg-muted/40 px-2 py-1.5 text-[0.7rem] font-semibold transition hover:bg-muted"
-            >
-              <span className="flex min-w-0 items-center gap-1.5">
-                <span className={`size-1.5 shrink-0 rounded-full ${verified ? 'bg-emerald-500' : 'bg-amber-500'}`} />
-                <span className="truncate">{site.name}</span>
-              </span>
-              <ExternalLink className="size-3 shrink-0 text-muted-foreground" />
-            </a>
-          ))}
+          {SOV_LIVE_SITES.map((site) => {
+            const access = getAccessMeta(kyc, site.live);
+
+            return (
+              <a
+                key={site.slug}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onNavigate}
+                className="rounded-md border border-border bg-muted/40 px-2 py-2 transition hover:bg-muted"
+              >
+                <span className="flex items-start justify-between gap-2">
+                  <span className="min-w-0">
+                    <span className="flex min-w-0 items-center gap-1.5 text-[0.7rem] font-semibold">
+                      <span className={`size-1.5 shrink-0 rounded-full ${access.dot}`} />
+                      <span className="truncate">{site.name}</span>
+                    </span>
+                    <span className={`mt-1 inline-flex rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider ${access.tone}`}>
+                      {access.label}
+                    </span>
+                  </span>
+                  <ExternalLink className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
+                </span>
+              </a>
+            );
+          })}
         </div>
         <p className="mt-1.5 text-[0.65rem] text-muted-foreground">
-          {verified ? 'Verified users get full posting and payment access across all sites.' : 'Unverified users stay in browse-only mode until KYC is approved.'}
+          {kyc === 'verified'
+            ? 'Verified users get full posting and payment access across all sites.'
+            : kyc === 'pending'
+              ? 'Pending users can browse now and unlock full tools as soon as review is approved.'
+              : 'Unverified users stay in browse-only mode until KYC is approved.'}
         </p>
       </div>
 
@@ -180,7 +225,7 @@ export function UserDashboardPanel({ onNavigate }: { onNavigate?: () => void }) 
   );
 }
 
-export function UserDashboardAccordion() {
+export function UserDashboardAccordion({ compact = false }: { compact?: boolean }) {
   const { user, loading, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -221,12 +266,12 @@ export function UserDashboardAccordion() {
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-haspopup="true"
-        className="flex max-w-[210px] items-center gap-2 rounded-full border border-border bg-muted/60 px-2.5 py-1.5 text-xs font-semibold transition hover:bg-muted"
+        className={`flex items-center gap-2 rounded-full border border-border bg-muted/60 px-2.5 py-1.5 text-xs font-semibold transition hover:bg-muted ${compact ? 'max-w-[42px] justify-center' : 'max-w-[210px]'}`}
       >
         <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-[0.65rem] font-black text-white">
           {initials || '.'}
         </span>
-        <span className="min-w-0 truncate">{user.full_name || user.email}</span>
+        {!compact ? <span className="min-w-0 truncate">{user.full_name || user.email}</span> : null}
         <ChevronDown className={`size-3.5 shrink-0 transition ${open ? 'rotate-180' : ''}`} />
       </button>
 

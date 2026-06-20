@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/auth-context';
 import { SOV_LIVE_SITES } from '@/lib/sov-ecosystem';
-import { UserDashboardPanel } from './UserDashboardAccordion';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -30,9 +29,9 @@ export function MobileMenu() {
               <Link href="/web-design#services" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 Services
               </Link>
-              <a href="https://sovdigitalgroup.com/kyc" target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
+              <Link href="/kyc" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 KYC
-              </a>
+              </Link>
               <Link href="/drive" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 Delivery Service
               </Link>
@@ -43,8 +42,10 @@ export function MobileMenu() {
 
             {!loading && user ? (
               <div className="rounded-2xl border border-border bg-card p-4">
-                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">Your dashboard</p>
-                <UserDashboardPanel onNavigate={() => setOpen(false)} />
+                <p className="text-sm font-bold">Signed in as {user.full_name || user.email}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Your dashboard now opens from the profile button beside the menu.
+                </p>
                 <Button
                   variant="outline"
                   size="sm"

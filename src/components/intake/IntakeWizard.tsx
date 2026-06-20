@@ -66,7 +66,7 @@ const initialState: FormState = {
   selected_plan: 'Starter',
 };
 
-export function IntakeWizard() {
+export function IntakeWizard({ initialEntity }: { initialEntity?: string }) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>(initialState);
   const [files, setFiles] = useState<File[]>([]);
@@ -74,6 +74,21 @@ export function IntakeWizard() {
   const [message, setMessage] = useState('');
   const [done, setDone] = useState(false);
   const [phoneVerified, setPhoneVerified] = useState(false);
+
+  const entityLabel = useMemo(() => {
+    switch (initialEntity) {
+      case 'sole_prop':
+        return 'Sole proprietor';
+      case 'partnership':
+        return 'Partnership';
+      case 'llc':
+        return 'LLC / Ltd company';
+      case 'ngo':
+        return 'NGO / Non-profit';
+      default:
+        return null;
+    }
+  }, [initialEntity]);
 
   const totalSteps = 6;
   const progress = useMemo(() => Math.round((step / totalSteps) * 100), [step]);
@@ -146,6 +161,11 @@ export function IntakeWizard() {
             <p className="text-sm text-muted-foreground">Step {step} of {totalSteps}</p>
           </div>
         </div>
+        {entityLabel ? (
+          <div className="rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm text-blue-800 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-200">
+            Setting up as <span className="font-bold">{entityLabel}</span>. We will use that context throughout your onboarding.
+          </div>
+        ) : null}
         <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
           <div className="h-full bg-primary transition-all" style={{ width: `${progress}%` }} />
         </div>
