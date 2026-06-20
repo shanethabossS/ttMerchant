@@ -24,6 +24,7 @@ export function MobileMenu() {
       {open && (
         <div className="absolute left-0 right-0 top-full z-40 border-b border-border bg-background shadow-lg">
           <div className="container mx-auto flex flex-col gap-1 px-4 py-4">
+            <Link href="/web-design" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Web Design</Link>
             <Link href="/join/business" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Business signup</Link>
             <Link href="/join/driver" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Driver signup</Link>
             <Link href="/admin" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted">Admin queue</Link>

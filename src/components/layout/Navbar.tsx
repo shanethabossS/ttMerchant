@@ -35,6 +35,9 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
+          <Link href="/web-design" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Web Design
+          </Link>
           <Link href="/join/business" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             Business
           </Link>
