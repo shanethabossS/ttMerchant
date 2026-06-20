@@ -20,8 +20,9 @@ export function Footer() {
           <div className="space-y-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Get Started</h4>
             <div className="flex flex-col gap-1.5">
-              <Link href="/join/business" className="hover:text-foreground">Business signup</Link>
-              <Link href="/join/driver" className="hover:text-foreground">Driver signup</Link>
+              <Link href="/signup" className="hover:text-foreground">Sign up</Link>
+              <Link href="/web-design#services" className="hover:text-foreground">Services</Link>
+              <Link href="/drive" className="hover:text-foreground">Delivery service</Link>
               <Link href="/login" className="hover:text-foreground">Sign in</Link>
             </div>
           </div>
@@ -34,14 +35,7 @@ export function Footer() {
             </div>
           </div>
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Internal</h4>
-            <div className="flex flex-col gap-1.5">
-              <Link href="/admin" className="hover:text-foreground">Admin queue</Link>
-              <a href="https://admin.sovdigitalgroup.com" className="hover:text-foreground">Dashboard</a>
-            </div>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">SOV Network</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">SOV Ecosystem</h4>
             <div className="flex flex-wrap gap-1.5">
               {NETWORK_SITES.map((site) => (
                 <a key={site.slug} href={site.url} target="_blank" rel="noopener noreferrer"

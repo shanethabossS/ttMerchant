@@ -8,6 +8,7 @@ interface User {
   full_name?: string;
   phone?: string;
   is_super_admin?: boolean;
+  kyc_status?: 'unverified' | 'pending' | 'verified' | 'rejected';
 }
 
 interface AuthContextType {

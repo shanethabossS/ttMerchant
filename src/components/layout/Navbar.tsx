@@ -6,46 +6,61 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/auth-context';
 import { MobileMenu } from './MobileMenu';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { SOV_LIVE_SITES } from '@/lib/sov-ecosystem';
+import { UserDashboardAccordion } from './UserDashboardAccordion';
 
 export function Navbar() {
-  const { user, loading, logout } = useAuth();
+  const { user, loading } = useAuth();
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/92 backdrop-blur">
       <div className="sov-network-bar">
-        <span className="sov-network-label">SOV Network</span>
         <div className="sov-network-chips">
-          <a href="https://admin.sovdigitalgroup.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">Admin</a>
-          <a href="https://api.sovdigitalgroup.com" className="sov-network-chip" target="_blank" rel="noopener noreferrer">API</a>
-          <span className="sov-network-chip sov-network-chip-current">LaunchTT</span>
+          {SOV_LIVE_SITES.map((site) => (
+            <a
+              key={site.slug}
+              href={site.url}
+              className={`sov-network-chip ${site.slug === 'sovconnect' ? 'sov-network-chip-current' : ''}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={site.description}
+            >
+              {site.name}
+            </a>
+          ))}
         </div>
       </div>
 
       <div className="container mx-auto flex min-h-16 items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 text-base font-black text-white">
-            🚀
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 text-sm font-black text-white">
+            LT
           </span>
           <span className="min-w-0">
             <span className="block truncate text-xl font-black tracking-tight">LaunchTT</span>
             <span className="hidden text-xs font-medium text-muted-foreground sm:block">
-              We launch your business — done for you
+              We launch your business - done for you
             </span>
           </span>
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          <Link href="/web-design" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
-            Web Design
+          <Link href="/web-design#services" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Services
           </Link>
-          <Link href="/join/business" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
-            Business
+          <Link href="/drive" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Delivery Service
           </Link>
-          <Link href="/join/driver" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
-            Driver
-          </Link>
-          <Link href="/admin" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
-            Admin
+          <a
+            href="https://sovdigitalgroup.com/kyc"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-semibold text-muted-foreground transition hover:text-foreground"
+          >
+            KYC
+          </a>
+          <Link href="/signup" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Sign up
           </Link>
         </div>
 
@@ -56,16 +71,11 @@ export function Navbar() {
             Secure
           </div>
           {!loading && user ? (
-            <div className="flex items-center gap-2">
-              <span className="max-w-[170px] truncate rounded-full border border-border bg-muted/60 px-3 py-1.5 text-xs font-semibold">
-                {user.full_name || user.email}
-              </span>
-              <Button variant="outline" size="sm" onClick={logout}>Sign out</Button>
-            </div>
+            <UserDashboardAccordion />
           ) : !loading ? (
             <div className="flex gap-2">
               <Link href="/login"><Button variant="outline" size="sm">Sign in</Button></Link>
-              <Link href="/signup"><Button size="sm">Get started</Button></Link>
+              <Link href="/signup"><Button size="sm">Sign up</Button></Link>
             </div>
           ) : null}
         </div>
