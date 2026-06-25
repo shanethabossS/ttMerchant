@@ -21,12 +21,13 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-type PlanKey = 'starter' | 'pro' | 'concierge';
+type PlanKey = 'starter' | 'business' | 'store' | 'premium';
 
 const PLANS: Record<PlanKey, { name: string; price: string; tagline: string; accent: string }> = {
-  starter:   { name: 'Starter',   price: '$199 TTD',   tagline: 'One-time setup',               accent: 'border-slate-300' },
-  pro:       { name: 'Pro',       price: '$499 TTD',   tagline: 'Setup + 3 months management',  accent: 'border-blue-500 ring-2 ring-blue-500/20' },
-  concierge: { name: 'Concierge', price: '$1,499 TTD', tagline: 'Setup + 6 months full-service',accent: 'border-amber-500' },
+  starter: { name: 'Starter Website', price: 'TT$1,500 setup + TT$150/month', tagline: 'Simple online presence', accent: 'border-slate-300' },
+  business: { name: 'Business Website', price: 'TT$3,500 setup + TT$250/month', tagline: 'Lead generation website', accent: 'border-blue-500 ring-2 ring-blue-500/20' },
+  store: { name: 'Shop868 Store', price: 'TT$2,500 setup + TT$300/month', tagline: 'Online storefront', accent: 'border-emerald-500' },
+  premium: { name: 'Premium Digital Package', price: 'TT$6,500 setup + TT$500/month', tagline: 'Full digital system', accent: 'border-amber-500' },
 };
 
 const SERVICES = [
@@ -58,12 +59,12 @@ const CATEGORIES = [
 ];
 
 function isValidPlan(p: string | null): p is PlanKey {
-  return p === 'starter' || p === 'pro' || p === 'concierge';
+  return p === 'starter' || p === 'business' || p === 'store' || p === 'premium';
 }
 
 export function StartForm() {
   const params = useSearchParams();
-  const initialPlan: PlanKey = isValidPlan(params.get('plan')) ? (params.get('plan') as PlanKey) : 'pro';
+  const initialPlan: PlanKey = isValidPlan(params.get('plan')) ? (params.get('plan') as PlanKey) : 'business';
 
   const [plan, setPlan] = useState<PlanKey>(initialPlan);
   const [fullName, setFullName] = useState('');
@@ -178,7 +179,7 @@ export function StartForm() {
       {/* Plan picker */}
       <fieldset className="space-y-3">
         <legend className="text-sm font-bold uppercase tracking-wider text-muted-foreground">1. Pick your plan</legend>
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {(Object.keys(PLANS) as PlanKey[]).map((key) => {
             const p = PLANS[key];
             const selected = plan === key;

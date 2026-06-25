@@ -25,7 +25,7 @@ import { Button } from '@/components/ui/button';
 const SITE_URL = 'https://launchtt.com';
 const TITLE = 'LaunchTT | Website Design, Online Ordering and Business Setup in Trinidad and Tobago';
 const DESCRIPTION =
-  'LaunchTT helps Trinidad and Tobago businesses get online with websites, online ordering, bookings, invoicing, WhatsApp integration, SEO, and done-for-you launch support.';
+  'LaunchTT helps Trinidad & Tobago businesses get online, sell better, and manage their digital presence without hiring an expensive agency.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -184,14 +184,10 @@ export default function HomePage() {
             Done-for-you online launch for Trinidad and Tobago
           </div>
           <h1 className="max-w-3xl text-4xl font-black tracking-tight md:text-6xl">
-            We launch your business{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300">
-              online the right way
-            </span>
+            Get your business online with a website, online store, invoicing, and support.
           </h1>
           <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
-            LaunchTT is built for Trinidad and Tobago business owners who need a proper website, online ordering,
-            bookings, payments, and support without learning five different tools first.
+            LaunchTT helps Trinidad & Tobago businesses get online, sell better, and manage their digital presence without hiring an expensive agency.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/signup">
@@ -348,63 +344,99 @@ export default function HomePage() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-black tracking-tight md:text-4xl">Simple, local pricing</h2>
             <p className="mt-3 text-base text-muted-foreground">
-              Flexible packages for businesses at different launch stages.
+              Clear setup pricing plus monthly hosting, maintenance, updates, and support.
             </p>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 lg:grid-cols-4">
             <div className="flex flex-col rounded-2xl border border-border bg-card p-6">
-              <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Starter</p>
-              <p className="mt-2 text-4xl font-black">$199<span className="text-base font-medium text-muted-foreground"> TTD</span></p>
-              <p className="mt-1 text-sm text-muted-foreground">One-time setup</p>
+              <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Starter Website</p>
+              <p className="mt-2 text-4xl font-black">TT$1,500</p>
+              <p className="mt-1 text-sm text-muted-foreground">Setup + TT$150/month</p>
+              <p className="mt-4 text-sm text-muted-foreground">Best for: small businesses that need a simple online presence.</p>
               <ul className="mt-5 space-y-2 text-sm">
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> SOV ecosystem signups and listings</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> WhatsApp setup</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Basic SEO foundations</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> One revision round</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> 1-3 page website</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Mobile responsive design</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Contact form</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> WhatsApp button</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Basic SEO setup</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Google Maps embed</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Hosting and maintenance included in monthly fee</li>
               </ul>
               <Link href="/start?plan=starter" className="mt-6">
-                <Button variant="outline" className="w-full">Start with Starter</Button>
+                <Button variant="outline" className="w-full">Start Website</Button>
               </Link>
             </div>
 
             <div className="relative flex flex-col rounded-2xl border-2 border-blue-500 bg-card p-6 shadow-lg">
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 px-3 py-1 text-xs font-bold text-white">Most popular</span>
-              <p className="text-sm font-bold uppercase tracking-wider text-blue-600">Pro</p>
-              <p className="mt-2 text-4xl font-black">$499<span className="text-base font-medium text-muted-foreground"> TTD</span></p>
-              <p className="mt-1 text-sm text-muted-foreground">Setup plus 3 months management</p>
+              <p className="text-sm font-bold uppercase tracking-wider text-blue-600">Business Website</p>
+              <p className="mt-2 text-4xl font-black">TT$3,500</p>
+              <p className="mt-1 text-sm text-muted-foreground">Setup + TT$250/month</p>
+              <p className="mt-4 text-sm text-muted-foreground">Best for: businesses that need a stronger website with service pages and lead generation.</p>
               <ul className="mt-5 space-y-2 text-sm">
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Everything in Starter</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Custom website and online ordering</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Booking system and invoice tools</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> AI assistant setup</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Ongoing menu and listing support</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Priority WhatsApp support</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Up to 6 pages</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Service/product sections</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Contact form</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> WhatsApp integration</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Basic SEO</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Google Maps</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Image gallery</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Admin-editable content where applicable</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Hosting, updates, and maintenance included</li>
               </ul>
-              <Link href="/start?plan=pro" className="mt-6">
+              <Link href="/start?plan=business" className="mt-6">
                 <Button className="w-full gap-2">
-                  Start with Pro <ArrowRight className="size-4" />
+                  Build My Business Site <ArrowRight className="size-4" />
                 </Button>
               </Link>
             </div>
 
             <div className="flex flex-col rounded-2xl border border-border bg-card p-6">
-              <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Concierge</p>
-              <p className="mt-2 text-4xl font-black">$1,499<span className="text-base font-medium text-muted-foreground"> TTD</span></p>
-              <p className="mt-1 text-sm text-muted-foreground">Setup plus 6 months support</p>
+              <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Shop868 Store</p>
+              <p className="mt-2 text-4xl font-black">TT$2,500</p>
+              <p className="mt-1 text-sm text-muted-foreground">Setup + TT$300/month</p>
+              <p className="mt-4 text-sm text-muted-foreground">Best for: businesses that want to sell products online.</p>
               <ul className="mt-5 space-y-2 text-sm">
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Everything in Pro</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Monthly content updates</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Review and messaging guidance</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Dedicated account support</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Priority launch revisions</li>
-                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Multi-platform rollout help</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Shop868 business profile</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Online storefront</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Product catalog setup</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> WhatsApp ordering</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Basic inventory/product management</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Customer inquiry/order flow</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Future TTPay integration when available</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Hosting and support included</li>
               </ul>
-              <Link href="/start?plan=concierge" className="mt-6">
-                <Button variant="outline" className="w-full">Talk to us</Button>
+              <Link href="/start?plan=store" className="mt-6">
+                <Button variant="outline" className="w-full">Launch My Store</Button>
+              </Link>
+            </div>
+
+            <div className="flex flex-col rounded-2xl border border-border bg-card p-6">
+              <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Premium Digital Package</p>
+              <p className="mt-2 text-4xl font-black">TT$6,500</p>
+              <p className="mt-1 text-sm text-muted-foreground">Setup + TT$500/month</p>
+              <p className="mt-4 text-sm text-muted-foreground">Best for: businesses that want a complete digital system.</p>
+              <ul className="mt-5 space-y-2 text-sm">
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Full business website</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Shop868 storefront</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> InvoiceTT setup</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Product/service catalog</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> WhatsApp integration</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> SEO setup</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Google Maps</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Analytics setup</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Monthly support</li>
+                <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-green-600" /> Priority updates</li>
+              </ul>
+              <Link href="/start?plan=premium" className="mt-6">
+                <Button variant="outline" className="w-full">Get Full Package</Button>
               </Link>
             </div>
           </div>
           <p className="mt-6 text-center text-xs text-muted-foreground">
+            Monthly fee covers hosting, maintenance, updates, and support. Custom features, large product uploads, payment gateway setup, booking systems, and advanced integrations may require a separate quote.
+          </p>
+          <p className="mt-3 text-center text-xs text-muted-foreground">
             Custom needs?{' '}
             <a href="https://wa.me/18685550199" className="font-bold text-blue-600 hover:underline">
               WhatsApp us

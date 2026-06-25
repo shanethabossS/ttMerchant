@@ -79,7 +79,7 @@ export const LAUNCHTT_SERVICE_PAGES: LaunchttServicePage[] = [
     ],
     hero: 'Online ordering that feels simple for customers and manageable for local business owners.',
     intro:
-      'LaunchTT helps Trinidad and Tobago businesses move from manual order-taking into cleaner digital ordering flows with better structure and clearer customer actions.',
+      'LaunchTT helps Trinidad & Tobago businesses get online, sell better, and manage their digital presence without hiring an expensive agency.',
     benefits: [
       'Menu and product presentation that is easier to browse on mobile',
       'Ordering flows connected to WhatsApp and customer contact channels',

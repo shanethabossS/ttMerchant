@@ -10,7 +10,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem('sov-theme');if(
 const siteUrl = 'https://launchtt.com';
 const defaultTitle = 'LaunchTT | Website Design, Online Ordering and Business Setup in Trinidad and Tobago';
 const defaultDescription =
-  'LaunchTT helps Trinidad and Tobago businesses get online with website design, online ordering, bookings, invoicing, WhatsApp integration, SEO, and launch support.';
+  'LaunchTT helps Trinidad & Tobago businesses get online, sell better, and manage their digital presence without hiring an expensive agency.';
 const defaultKeywords = [
   'website design Trinidad',
   'website design Trinidad and Tobago',

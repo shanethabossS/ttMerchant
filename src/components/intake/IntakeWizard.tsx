@@ -20,7 +20,7 @@ const services = [
   'SEO Setup',
 ];
 
-const plans = ['Starter', 'Growth', 'Business'];
+const plans = ['Starter Website', 'Business Website', 'Shop868 Store', 'Premium Digital Package'];
 
 type FormState = {
   full_name: string;
@@ -63,7 +63,7 @@ const initialState: FormState = {
   facebook: '',
   website: '',
   preferred_contact_method: 'whatsapp',
-  selected_plan: 'Starter',
+  selected_plan: 'Business Website',
 };
 
 export function IntakeWizard({ initialEntity }: { initialEntity?: string }) {
@@ -241,11 +241,11 @@ export function IntakeWizard({ initialEntity }: { initialEntity?: string }) {
         {step === 5 && (
           <div className="space-y-4">
             <h2 className="text-lg font-bold">Choose your plan</h2>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {plans.map((plan) => (
                 <button key={plan} type="button" onClick={() => setForm({ ...form, selected_plan: plan })} className={`rounded-xl border p-4 text-left transition ${form.selected_plan === plan ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border bg-background hover:bg-muted'}`}>
                   <p className="text-sm font-bold">{plan}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{plan === 'Starter' ? 'Launch essentials — free' : plan === 'Growth' ? 'More visibility + support' : 'Complete business onboarding'}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{plan === 'Starter Website' ? 'Simple online presence' : plan === 'Business Website' ? 'Lead generation website' : plan === 'Shop868 Store' ? 'Online storefront' : 'Full digital system'}</p>
                 </button>
               ))}
             </div>

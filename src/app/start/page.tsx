@@ -4,7 +4,7 @@ import { StartForm } from '@/components/start/StartForm';
 
 export const metadata: Metadata = {
   title: 'Start Your Launch in Trinidad and Tobago',
-  description: 'Fill out the LaunchTT start form for website design, online ordering, bookings, invoicing, and business launch support in Trinidad and Tobago.',
+  description: 'Fill out the LaunchTT start form for websites, online stores, invoicing, and digital support in Trinidad and Tobago.',
   alternates: { canonical: '/start' },
   keywords: [
     'start business website Trinidad',
