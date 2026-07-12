@@ -51,3 +51,7 @@ playwright-report/
 test-results/
 
 .tmp-start*.log
+
+# Vercel CLI env pull outputs (may contain live secrets)
+.env.vercel*
+.env*.production
