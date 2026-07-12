@@ -49,3 +49,5 @@ next-env.d.ts
 .tmp-dev.log
 playwright-report/
 test-results/
+
+.tmp-start*.log
