@@ -42,6 +42,61 @@ export async function POST(req: NextRequest) {
   if (!body) return NextResponse.json({ error: 'Invalid body' }, { status: 400 });
 
   const userId = await resolveAuthUserId(req);
+  const token = req.cookies.get('auth_token')?.value;
+  const merchantPayload = {
+    business_name: String(body.business_name || ''),
+    contact_email: String(body.email || ''),
+    contact_phone: String(body.phone || ''),
+    whatsapp_number: String(body.whatsapp_number || ''),
+    category: String(body.business_category || ''),
+    description: String(body.business_description || ''),
+    address: String(body.address || ''),
+    service_area: String(body.service_area || ''),
+    opening_hours: String(body.opening_hours || ''),
+    preferred_contact_method: String(body.preferred_contact_method || 'whatsapp'),
+    selected_services: Array.isArray(body.selected_services) ? body.selected_services : [],
+    selected_plan: String(body.selected_plan || 'Starter'),
+    uploaded_files: Array.isArray(body.uploadedFiles) ? body.uploadedFiles : [],
+  };
+
+  if (userId && token && !token.startsWith('local_')) {
+    try {
+      const upstream = await fetch(`${getApiBase()}/api/merchants/me`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(merchantPayload),
+        cache: 'no-store',
+      });
+      const data = await upstream.json().catch(() => ({}));
+      if (!upstream.ok) {
+        return NextResponse.json({ error: String(data?.error || 'Unable to save merchant profile') }, { status: upstream.status });
+      }
+
+      const merchantId = String(data?.merchant?.id || '');
+      const adminEmails = String(process.env.MERCHANT_INTAKE_ADMIN_EMAILS || '').split(',').map((v) => v.trim()).filter(Boolean);
+      const customerEmail = String(body.email || '').trim();
+      await Promise.allSettled([
+        customerEmail
+          ? sendEmail({
+              to: customerEmail,
+              subject: 'SOV Merchant Intake Received',
+              text: `Hi ${String(body.full_name || 'there')}, your business profile for ${String(body.business_name || 'your business')} was received.`,
+            })
+          : Promise.resolve({ skipped: true }),
+        adminEmails.length
+          ? sendEmail({
+              to: adminEmails,
+              subject: 'New Merchant Intake',
+              text: `New merchant ${String(body.business_name || 'Unknown')} (${String(body.email || 'no-email')}).`,
+            })
+          : Promise.resolve({ skipped: true }),
+      ]);
+      return NextResponse.json({ ok: true, merchantId, queue_status: data?.merchant?.status || 'draft', user_id: userId });
+    } catch {
+      return NextResponse.json({ error: 'Merchant service unavailable' }, { status: 503 });
+    }
+  }
+
   const lead = createLeadSubmission({
     user_id: userId,
     full_name: String(body.full_name || ''),

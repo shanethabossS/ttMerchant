@@ -121,6 +121,20 @@ export function IntakeWizard({ initialEntity }: { initialEntity?: string }) {
     setMessage('');
     try {
       const uploadedFiles = await uploadFiles();
+      const authRes = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: form.full_name,
+          business_name: form.business_name,
+          email: form.email,
+          phone: form.phone,
+          whatsapp_number: form.whatsapp_number,
+          password: form.password,
+        }),
+      });
+      const authData = await authRes.json().catch(() => ({}));
+      if (!authRes.ok) throw new Error(authData.error || 'Unable to create your account');
       const res = await fetch('/api/intake/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
