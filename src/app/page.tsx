@@ -204,9 +204,9 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="text-xs text-muted-foreground">
-            No credit card. Free quote in 24 hours. WhatsApp{' '}
-            <a className="font-bold text-blue-600 hover:underline" href="https://wa.me/18685550199">
-              +1 (868) 555-0199
+            No credit card. Free quote in 24 hours.{' '}
+            <a className="font-bold text-blue-600 hover:underline" href="mailto:info@sovdigitalgroup.com">
+              info@sovdigitalgroup.com
             </a>
           </p>
         </div>
