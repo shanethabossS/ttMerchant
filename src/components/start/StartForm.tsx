@@ -20,6 +20,7 @@ import {
   Truck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { supportWhatsAppUrl } from '@/lib/contact';
 
 type PlanKey = 'starter' | 'business' | 'store' | 'premium';
 
@@ -149,7 +150,7 @@ export function StartForm() {
           If you prefer to chat, our team is on WhatsApp.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <a href={`https://wa.me/18685550199?text=${encodeURIComponent(`Hi LaunchTT — I just submitted my business "${businessName}" for the ${PLANS[plan].name} plan.`)}`} target="_blank" rel="noopener noreferrer">
+          <a href={supportWhatsAppUrl(`Hi LaunchTT — I just submitted my business "${businessName}" for the ${PLANS[plan].name} plan.`)} target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="gap-2">
               <MessageCircle className="size-5" /> Continue on WhatsApp
             </Button>
@@ -360,7 +361,7 @@ export function StartForm() {
       <div className="space-y-3">
         {errorMsg && (
           <div className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-950/30 dark:text-red-300">
-            {errorMsg} — or <a href="https://wa.me/18685550199" className="font-bold underline">WhatsApp us</a> instead.
+            {errorMsg} — or <a href={supportWhatsAppUrl('Hi LaunchTT — I had trouble submitting the start form.')} target="_blank" rel="noopener noreferrer" className="font-bold underline">WhatsApp us</a> instead.
           </div>
         )}
         <Button

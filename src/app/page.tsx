@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { HomeStatusStrip } from '@/components/home/HomeStatusStrip';
 import { Button } from '@/components/ui/button';
+import { supportWhatsAppUrl } from '@/lib/contact';
 
 const SITE_URL = 'https://launchtt.com';
 const TITLE = 'LaunchTT | Website Design, Online Ordering and Business Setup in Trinidad and Tobago';
@@ -438,7 +439,7 @@ export default function HomePage() {
           </p>
           <p className="mt-3 text-center text-xs text-muted-foreground">
             Custom needs?{' '}
-            <a href="https://wa.me/18685550199" className="font-bold text-blue-600 hover:underline">
+            <a href={supportWhatsAppUrl('Hi LaunchTT — I have a custom project and need a tailored quote.')} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">
               WhatsApp us
             </a>{' '}
             for a tailored quote.
@@ -483,7 +484,7 @@ export default function HomePage() {
               <ArrowRight className="size-4" />
             </Button>
           </Link>
-          <a href="https://wa.me/18685550199" target="_blank" rel="noopener noreferrer">
+          <a href={supportWhatsAppUrl('Hi LaunchTT — I would like to get my business online.')} target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="outline" className="gap-2 text-base">
               <MessageCircle className="size-5" />
               WhatsApp instead

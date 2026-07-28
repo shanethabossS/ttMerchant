@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle2, FileBadge2, ShieldCheck, WalletCards } from 'lucide-react';
 import { buildFaqJsonLd } from '@/lib/seo/launchtt-pages';
+import { supportWhatsAppUrl } from '@/lib/contact';
 
 const requirements = [
   'Government-issued ID',
@@ -136,7 +137,7 @@ export default function KycPage() {
               Sign in
             </Link>
             <a
-              href="https://wa.me/18685550199"
+              href={supportWhatsAppUrl('Hi LaunchTT — I have a question about verification (KYC).')}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-lg border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted"
