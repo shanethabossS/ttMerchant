@@ -1,16 +1,19 @@
 import Link from 'next/link';
+import { Fraunces } from 'next/font/google';
 import { getEcosystemLinks } from '@/lib/sov-ecosystem';
 
 const NETWORK_SITES = getEcosystemLinks('sovconnect');
+const fraunces = Fraunces({ subsets: ['latin'], weight: ['600', '700'], variable: '--font-display', display: 'swap' });
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-muted/35 py-8">
-      <div className="container mx-auto flex flex-col justify-between gap-6 px-4 text-sm text-muted-foreground md:flex-row md:items-start">
+    <footer className={`${fraunces.variable} mt-auto border-t border-border bg-muted/35`}>
+      <div className="lt-fretwork" />
+      <div className="container mx-auto flex flex-col justify-between gap-6 px-4 py-8 text-sm text-muted-foreground md:flex-row md:items-start">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="flex size-7 items-center justify-center rounded-md bg-primary text-[10px] font-black text-primary-foreground">SOV</span>
-            <span className="font-bold text-foreground">Connect</span>
+            <span className="flex size-7 items-center justify-center rounded-sm bg-foreground text-[10px] font-black text-background">SOV</span>
+            <span className="lt-serif font-semibold text-foreground">Connect</span>
           </div>
           <p className="max-w-xs text-xs leading-5">The easiest way for Trinidad businesses and drivers to get online. Powered by Sovereign Digital Group Limited.</p>
           <p className="text-xs">&copy; {new Date().getFullYear()} Sovereign Digital Group Limited.</p>
