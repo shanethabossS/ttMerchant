@@ -51,6 +51,9 @@ export function Navbar() {
           <Link href="/web-design#services" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             Services
           </Link>
+          <Link href="/food" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            For Restaurants
+          </Link>
           <Link href="/drive" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             Delivery Service
           </Link>

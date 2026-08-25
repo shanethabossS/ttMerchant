@@ -508,6 +508,29 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
+      {/* ── FoodSTT cross-promotion ── */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-10">
+        <div className="flex flex-col items-start gap-6 rounded-2xl border border-orange-300 bg-gradient-to-br from-orange-50 to-rose-50 p-6 md:flex-row md:items-center md:justify-between md:p-8 dark:border-orange-900 dark:from-orange-950/30 dark:to-rose-950/20">
+          <div className="flex items-start gap-4">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-950/60 dark:text-orange-400">
+              <Utensils className="size-6" />
+            </div>
+            <div>
+              <h2 className="lt-serif text-2xl font-semibold tracking-tight">Own a restaurant? Join FoodSTT.</h2>
+              <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+                Your own online ordering page, live prep timers, and QR pickup. Onboarding 20 founding
+                restaurants now — 60 days free, then TT$200/month.
+              </p>
+            </div>
+          </div>
+          <Link href="/food" className="shrink-0">
+            <Button size="lg" className="rounded-sm bg-gradient-to-r from-orange-600 to-rose-500 text-white hover:from-orange-700 hover:to-rose-600">
+              Apply now <ArrowRight className="ml-2 size-4" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       <section className="border-t border-border bg-muted/25">
         <div className="mx-auto w-full max-w-4xl px-4 py-16 md:py-24">
           <div className="max-w-2xl">

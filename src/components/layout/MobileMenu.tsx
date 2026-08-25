@@ -29,6 +29,9 @@ export function MobileMenu() {
               <Link href="/web-design#services" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 Services
               </Link>
+              <Link href="/food" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
+                For Restaurants
+              </Link>
               <Link href="/kyc" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 KYC
               </Link>

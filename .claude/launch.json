@@ -6,7 +6,7 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["next", "dev", "--port", "3008"],
       "port": 3008,
-      "cwd": "C:\\AI_WORKSPACE\\01_PRODUCTS\\WEB_APPS\\ttmerchant"
+      "cwd": "C:\\AI_WORKSPACE\\01_PRODUCTS\\WEB_APPS\\launchtt"
     }
   ]
 }
