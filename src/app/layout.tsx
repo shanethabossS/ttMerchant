@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   areaServed: 'Trinidad and Tobago',
                   parentOrganization: {
                     '@type': 'Organization',
-                    name: 'Sovereign Digital Group Ltd',
+                    name: 'Sovereign Digital Solutions Limited',
                     url: 'https://sovdigitalgroup.com',
                   },
                 },

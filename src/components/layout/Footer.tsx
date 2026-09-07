@@ -15,8 +15,8 @@ export function Footer() {
             <span className="flex size-7 items-center justify-center rounded-sm bg-foreground text-[10px] font-black text-background">SOV</span>
             <span className="lt-serif font-semibold text-foreground">Connect</span>
           </div>
-          <p className="max-w-xs text-xs leading-5">The easiest way for Trinidad businesses and drivers to get online. Powered by Sovereign Digital Group Limited.</p>
-          <p className="text-xs">&copy; {new Date().getFullYear()} Sovereign Digital Group Limited.</p>
+          <p className="max-w-xs text-xs leading-5">The easiest way for Trinidad businesses and drivers to get online. Powered by Sovereign Digital Solutions Limited.</p>
+          <p className="text-xs">&copy; {new Date().getFullYear()} Sovereign Digital Solutions Limited.</p>
         </div>
 
         <div className="flex flex-wrap gap-x-8 gap-y-4">

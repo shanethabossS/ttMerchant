@@ -172,7 +172,7 @@ const jsonLd = {
         url: SITE_URL,
         parentOrganization: {
           '@type': 'Organization',
-          name: 'Sovereign Digital Group Ltd',
+          name: 'Sovereign Digital Solutions Limited',
           url: 'https://sovdigitalgroup.com',
         },
       },
@@ -405,7 +405,7 @@ export default function WebDesignPage() {
                 <ContactRow icon={<Mail className="size-5" />} label="Email" value={EMAIL} href={`mailto:${EMAIL}?subject=LaunchTT%20Web%20Design%20Enquiry`} />
                 <ContactRow icon={<Clock className="size-5" />} label="Reply time" value="Within 1 business day · Mon-Fri" />
                 <ContactRow icon={<MapPin className="size-5" />} label="Where" value="Trinidad & Tobago — serving the whole twin-island" />
-                <ContactRow icon={<ShieldCheck className="size-5" />} label="Trust" value="Part of Sovereign Digital Group · local digital operations" />
+                <ContactRow icon={<ShieldCheck className="size-5" />} label="Trust" value="Part of Sovereign Digital Solutions Limited · local digital operations" />
               </div>
             </div>
 
