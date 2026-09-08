@@ -8,12 +8,18 @@ import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 const themeScript = `(function(){try{var t=localStorage.getItem('sov-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();`;
 const siteUrl = 'https://launchtt.com';
-const defaultTitle = 'LaunchTT | Website Design, Online Ordering and Business Setup in Trinidad and Tobago';
+const defaultTitle = 'LaunchTT | Website Design & App Development in Trinidad and Tobago';
 const defaultDescription =
   'LaunchTT helps Trinidad & Tobago businesses get online, sell better, and manage their digital presence without hiring an expensive agency.';
 const defaultKeywords = [
   'website design Trinidad',
   'website design Trinidad and Tobago',
+  'build a website Trinidad',
+  'web developer Trinidad',
+  'web developer Trinidad and Tobago',
+  'app development Trinidad',
+  'app development Trinidad and Tobago',
+  'mobile app development Trinidad',
   'small business website Trinidad',
   'online store Trinidad',
   'food ordering website Trinidad',
@@ -24,6 +30,10 @@ const defaultKeywords = [
   'WhatsApp ordering Trinidad',
   'invoice system Trinidad',
   'SEO services Trinidad',
+  'LaunchTT',
+  'Trinidad',
+  'Tobago',
+  'Trinidad and Tobago',
 ];
 
 const geistSans = Geist({
@@ -65,11 +75,13 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'LaunchTT',
     locale: 'en_TT',
+    images: [{ url: '/portfolio/launchtt.png', alt: 'LaunchTT' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: defaultTitle,
     description: defaultDescription,
+    images: ['/portfolio/launchtt.png'],
   },
   category: 'business',
 };
