@@ -7,8 +7,12 @@ export function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('sov-theme');
-    const prefersDark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    // localStorage/matchMedia throw on iOS Safari when site data is blocked.
+    let stored: string | null = null;
+    try { stored = localStorage.getItem('sov-theme'); } catch { stored = null; }
+    let systemDark = false;
+    try { systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch { systemDark = false; }
+    const prefersDark = stored === 'dark' || (!stored && systemDark);
     setDark(prefersDark);
     document.documentElement.classList.toggle('dark', prefersDark);
   }, []);
@@ -17,7 +21,7 @@ export function ThemeToggle() {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle('dark', next);
-    localStorage.setItem('sov-theme', next ? 'dark' : 'light');
+    try { localStorage.setItem('sov-theme', next ? 'dark' : 'light'); } catch { /* storage unavailable */ }
   }
 
   return (
