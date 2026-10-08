@@ -367,3 +367,224 @@
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 20%, transparent);
 }
 select.input { appearance: none; padding-right: 2.4rem; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+
+:root {
+  --sov-page: #f7f5ef;
+  --sov-nav: #17353e;
+  --sov-ink: #172e35;
+  --sov-muted: #536367;
+  --sov-border: #e0e4df;
+  --sov-card: #ffffff;
+  --sov-accent: #95620f;
+  --sov-hero: #f0eee6;
+  --sov-radius-card: 10px;
+  --sov-radius-hero: 16px;
+  --sov-content-width: 1444px;
+  --background: var(--sov-page);
+  --foreground: var(--sov-ink);
+  --card: var(--sov-card);
+  --card-foreground: var(--sov-ink);
+  --popover: var(--sov-card);
+  --popover-foreground: var(--sov-ink);
+  --primary: var(--sov-accent);
+  --primary-foreground: #ffffff;
+  --secondary: #e9ece6;
+  --secondary-foreground: var(--sov-ink);
+  --muted: #eceee8;
+  --muted-foreground: var(--sov-muted);
+  --accent: var(--sov-accent);
+  --accent-foreground: #ffffff;
+  --border: var(--sov-border);
+  --input: var(--sov-border);
+  --ring: var(--sov-accent);
+  --sidebar: var(--sov-card);
+  --sidebar-foreground: var(--sov-ink);
+  --sidebar-primary: var(--sov-accent);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--sov-hero);
+  --sidebar-accent-foreground: var(--sov-ink);
+  --sidebar-border: var(--sov-border);
+  --sidebar-ring: var(--sov-accent);
+  --radius: 0.625rem;
+}
+
+.dark {
+  --sov-page: #102128;
+  --sov-nav: #102128;
+  --sov-ink: #eff5f2;
+  --sov-muted: #b2c2bf;
+  --sov-border: #36505a;
+  --sov-card: #182e36;
+  --sov-accent: #c9963d;
+  --sov-hero: #182e36;
+  --background: var(--sov-page);
+  --foreground: var(--sov-ink);
+  --card: var(--sov-card);
+  --card-foreground: var(--sov-ink);
+  --popover: var(--sov-card);
+  --popover-foreground: var(--sov-ink);
+  --primary: var(--sov-accent);
+  --primary-foreground: #172e35;
+  --secondary: #203943;
+  --secondary-foreground: var(--sov-ink);
+  --muted: #203943;
+  --muted-foreground: var(--sov-muted);
+  --accent: var(--sov-accent);
+  --accent-foreground: #172e35;
+  --border: var(--sov-border);
+  --input: var(--sov-border);
+  --ring: var(--sov-accent);
+  --sidebar: var(--sov-page);
+  --sidebar-foreground: var(--sov-ink);
+  --sidebar-primary: var(--sov-accent);
+  --sidebar-primary-foreground: #172e35;
+  --sidebar-accent: var(--sov-card);
+  --sidebar-accent-foreground: var(--sov-ink);
+  --sidebar-border: var(--sov-border);
+  --sidebar-ring: var(--sov-accent);
+}
+
+body {
+  background: var(--sov-page);
+  color: var(--sov-ink);
+}
+
+nav.sticky.top-0 {
+  background: var(--sov-nav);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  backdrop-filter: none;
+}
+
+nav.sticky.top-0 .container a {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+nav.sticky.top-0 .container a:hover {
+  color: #ffffff;
+}
+
+nav.sticky.top-0 .size-9 {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #172e35;
+}
+
+nav.sticky.top-0 button.size-10 {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+}
+
+nav.sticky.top-0 button[data-slot="button"]:not(.bg-primary) {
+  color: #172e35;
+}
+
+nav.sticky.top-0 .container .min-w-0 span.text-muted-foreground {
+  color: #c0d3d3;
+}
+
+nav.sticky.top-0 div[class*="text-foreground"][class*="rounded-sm"][class*="border"] {
+  color: #c0d3d3;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sov-network-bar {
+  background: var(--sov-nav);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.lt-card,
+.lt-browser,
+.lt-featured {
+  border-radius: var(--sov-radius-card);
+  box-shadow: 0 2px 8px rgba(23, 46, 53, 0.07);
+}
+
+.lt-card:hover {
+  transform: translateY(-1px);
+}
+
+.dark .lt-browser {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+.dark .lt-featured {
+  box-shadow: none;
+}
+
+.dark .lt-hl {
+  background: linear-gradient(transparent 68%, color-mix(in oklab, var(--sov-accent) 34%, transparent) 68%);
+}
+
+.bg-primary:hover,
+.lt-btn-primary:hover {
+  background-color: color-mix(in srgb, var(--sov-accent) 82%, #172e35);
+}
+
+:root:not(.dark) .bg-primary,
+:root:not(.dark) .lt-btn-primary {
+  color: #ffffff;
+}
+
+.dark .bg-primary,
+.dark .lt-btn-primary {
+  color: #172e35;
+}
+
+.dark nav.sticky.top-0 .container .bg-primary {
+  color: #172e35;
+}
+
+main > div > section.relative.overflow-hidden.border-b.bg-background {
+  background: var(--sov-hero);
+}
+
+main > div > section.relative.overflow-hidden.border-b.bg-background > .pointer-events-none.absolute {
+  display: none;
+}
+
+main > div > section.relative.overflow-hidden.border-b.bg-background > .mx-auto {
+  max-width: var(--sov-content-width);
+  padding-block: 2.75rem;
+}
+
+main h1.lt-serif {
+  font-family: var(--font-geist-sans, system-ui, sans-serif);
+  font-size: clamp(34px, 3.4vw, 48px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.sov-network-bar a:focus-visible,
+nav.sticky.top-0 a:focus-visible,
+nav.sticky.top-0 button:focus-visible,
+.lt-card:focus-visible,
+.lt-btn-primary:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--sov-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 15px;
+  }
+
+  main > div > section.relative.overflow-hidden.border-b.bg-background > .mx-auto {
+    padding-block: 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt-card,
+  .lt-reveal,
+  .lt-btn-primary,
+  nav.sticky.top-0,
+  .sov-network-chip,
+  button {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
