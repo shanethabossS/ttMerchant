@@ -477,6 +477,7 @@ nav.sticky.top-0 button.size-10 {
 }
 
 nav.sticky.top-0 button[data-slot="button"]:not(.bg-primary) {
+  background: #ffffff;
   color: #172e35;
 }
 
