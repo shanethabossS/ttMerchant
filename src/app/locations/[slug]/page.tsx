@@ -11,8 +11,9 @@ export function generateStaticParams() {
   return LAUNCHTT_LOCATION_PAGES.map((location) => ({ slug: location.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const location = LAUNCHTT_LOCATION_PAGES.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const location = LAUNCHTT_LOCATION_PAGES.find((item) => item.slug === slug);
   if (!location) return {};
 
   const url = `${SITE_URL}/locations/${location.slug}`;
@@ -33,8 +34,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function LocationPage({ params }: { params: { slug: string } }) {
-  const location = LAUNCHTT_LOCATION_PAGES.find((item) => item.slug === params.slug);
+export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const location = LAUNCHTT_LOCATION_PAGES.find((item) => item.slug === slug);
   if (!location) notFound();
 
   const jsonLd = {

@@ -11,8 +11,9 @@ export function generateStaticParams() {
   return LAUNCHTT_SERVICE_PAGES.map((service) => ({ slug: service.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const service = LAUNCHTT_SERVICE_PAGES.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const service = LAUNCHTT_SERVICE_PAGES.find((item) => item.slug === slug);
   if (!service) return {};
 
   const title = `${service.metaTitle} | LaunchTT`;
@@ -39,8 +40,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = LAUNCHTT_SERVICE_PAGES.find((item) => item.slug === params.slug);
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const service = LAUNCHTT_SERVICE_PAGES.find((item) => item.slug === slug);
   if (!service) notFound();
 
   const jsonLd = {
