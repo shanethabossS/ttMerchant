@@ -100,13 +100,6 @@ const steps = [
   { num: '04', title: 'Approve and go live', desc: 'You review, we refine, and then your business launches with ongoing support options.' },
 ];
 
-const stats = [
-  { value: '48hr', label: 'Average first response' },
-  { value: '$0', label: 'To get a quote' },
-  { value: '10+', label: 'Connected platforms' },
-  { value: 'Done', label: 'For you' },
-];
-
 const businessTypes = [
   'Restaurants and food vendors',
   'Salons and barbers',
@@ -188,14 +181,13 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HomeStatusStrip />
 
-      {/* ── Hero — asymmetric, left-set headline + browser mock, no gradient wash ── */}
-      <section className="relative overflow-hidden border-b border-border bg-background">
-        <div className="pointer-events-none absolute -top-24 -right-32 size-[26rem] rounded-full bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] blur-3xl" />
-        <div className="mx-auto grid w-full max-w-6xl gap-12 px-4 py-16 md:py-24 lg:grid-cols-12 lg:items-center lg:gap-8">
-          <div className="lg:col-span-7">
+      {/* ── Hero — editorial promise with a clearly labelled concept preview ── */}
+      <section className="lt-hero relative overflow-hidden border-b border-border bg-background">
+        <div className="lt-hero-inner mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 md:py-20 lg:grid-cols-12 lg:items-center lg:gap-10">
+          <div className="lt-hero-copy lg:col-span-6">
             <p className="lt-kicker">Done-for-you online launch, built in Trinidad &amp; Tobago</p>
-            <h1 className="lt-serif mt-5 max-w-2xl text-[2.75rem] font-semibold leading-[1.03] tracking-tight md:text-6xl lg:text-[4rem]">
-              Get your business <span className="lt-hl">online</span>&nbsp;— website, store, invoicing, and support.
+            <h1 className="lt-serif mt-5 max-w-xl text-[2.9rem] font-semibold leading-[0.98] tracking-tight md:text-6xl lg:text-[4.35rem]">
+              Your business.<br /><span className="lt-hl">Ready for what’s next.</span>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
               LaunchTT helps Trinidad &amp; Tobago businesses get online, sell better, and manage their digital
@@ -223,35 +215,28 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="lg:col-span-5 lg:justify-self-end">
-            <div className="lt-browser mx-auto max-w-sm rounded-lg lg:mr-0 lg:ml-auto">
+          <div className="lt-hero-art lg:col-span-6 lg:justify-self-end">
+            <div className="lt-browser lt-launch-preview mx-auto w-full max-w-[31rem] rounded-lg lg:mr-0 lg:ml-auto" aria-label="Launch preview concept showing a business profile, services, orders, and invoices">
+              <div className="lt-preview-label"><span>Launch preview</span><span>Concept layout</span></div>
               <div className="lt-browser-bar">
                 <span className="lt-browser-dot" />
                 <span className="lt-browser-dot" />
                 <span className="lt-browser-dot" />
                 <span className="ml-2 flex-1 truncate rounded-sm bg-background px-2.5 py-1 text-[0.7rem] text-muted-foreground">
-                  yourbusiness.tt
+                  yourbusiness.co.tt
                 </span>
               </div>
-              <div className="space-y-3 p-5">
-                <div className="h-3 w-2/3 rounded-full bg-[color-mix(in_oklab,var(--accent)_30%,var(--muted))]" />
-                <div className="h-2 w-full rounded-full bg-muted" />
-                <div className="h-2 w-5/6 rounded-full bg-muted" />
-                <div className="mt-4 h-24 rounded-md border border-border bg-muted/60" />
-                <div className="flex gap-2 pt-1">
-                  <div className="h-7 w-20 rounded-sm bg-primary" />
-                  <div className="h-7 w-20 rounded-sm border border-border" />
+              <div className="lt-preview-body">
+                <div className="lt-preview-brand">
+                  <span className="lt-preview-monogram">YB</span>
+                  <div><p className="lt-preview-overline">Sample business</p><p className="lt-preview-name">Your Business Name</p></div>
+                  <span className="lt-preview-live"><i /> Profile</span>
                 </div>
-              </div>
-              <div className="grid grid-cols-2 gap-px border-t border-border bg-border">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="bg-card px-4 py-3">
-                    <p className="lt-serif text-xl font-semibold tabular-nums">{stat.value}</p>
-                    <p className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
+                <div className="lt-preview-tabs" aria-hidden="true"><span className="active">Overview</span><span>Services</span><span>Orders</span><span>Invoices</span></div>
+                <div className="lt-preview-content">
+                  <div className="lt-preview-copy"><span>Welcome</span><strong>How can we help today?</strong><p>Introduce your business and make the next step easy to find.</p><div className="lt-preview-button">Explore services <ArrowRight className="size-3.5" /></div></div>
+                  <div className="lt-preview-services"><span className="lt-preview-overline">Services</span><div><span className="lt-preview-service-icon"><Globe className="size-4" /></span><span><strong>Service one</strong><small>Details and booking</small></span><ArrowRight className="ml-auto size-3.5 text-muted-foreground" /></div><div><span className="lt-preview-service-icon"><ShoppingBag className="size-4" /></span><span><strong>Service two</strong><small>Details and ordering</small></span><ArrowRight className="ml-auto size-3.5 text-muted-foreground" /></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -343,21 +328,16 @@ export default function HomePage() {
             The goal is to get you live quickly without making you become your own web team first.
           </p>
         </div>
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="lt-service-list mt-10">
           {conciergeServices.map((service, i) => (
-            <RevealOnScroll key={service.title} delay={i * 80} className={service.featured ? 'lg:col-span-2' : ''}>
-              <article className={`lt-card flex h-full flex-col rounded-md p-6 ${service.featured ? 'bg-primary text-primary-foreground' : ''}`}>
-                <div
-                  className={`mb-4 flex size-11 items-center justify-center rounded-sm border ${
-                    service.featured ? 'border-primary-foreground/25' : 'border-border'
-                  }`}
-                >
-                  <service.icon className="size-5" style={!service.featured ? { color: 'color-mix(in oklab, var(--accent) 80%, var(--foreground))' } : undefined} />
+            <RevealOnScroll key={service.title} delay={i * 45}>
+              <article className="lt-service-row">
+                <span className="lt-service-number">{String(i + 1).padStart(2, '0')}</span>
+                <span className="lt-service-icon"><service.icon className="size-5" /></span>
+                <div className="lt-service-copy">
+                  <h3 className="lt-serif text-lg font-semibold">{service.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{service.desc}</p>
                 </div>
-                <h3 className="lt-serif text-lg font-semibold">{service.title}</h3>
-                <p className={`mt-2 text-sm leading-relaxed ${service.featured ? 'text-primary-foreground' : 'text-muted-foreground'}`}>
-                  {service.desc}
-                </p>
               </article>
             </RevealOnScroll>
           ))}
@@ -407,7 +387,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-4 lg:items-start">
+        <div className="lt-pricing-grid mt-12 grid gap-5 lg:grid-cols-4 lg:items-start">
           <div className="lt-card flex flex-col rounded-md p-6">
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Starter Website</p>
             <p className="lt-serif mt-3 text-4xl font-semibold tabular-nums">TT$1,500</p>
