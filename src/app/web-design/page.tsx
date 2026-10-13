@@ -18,7 +18,7 @@ import ContactForm from '@/components/web-design/ContactForm';
 import Portfolio from '@/components/web-design/Portfolio';
 
 const SITE_URL = 'https://launchtt.com';
-const EMAIL = 'info@sovdigitalgroup.com';
+const EMAIL = 'launch@sovdigitalgroup.com';
 
 const TITLE = 'Web Design & Digital Packages in Trinidad & Tobago | LaunchTT';
 const DESC = 'LaunchTT helps Trinidad & Tobago businesses get online, sell better, and manage their digital presence without hiring an expensive agency.';

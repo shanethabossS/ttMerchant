@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-const TO_EMAIL = process.env.WEB_DESIGN_INBOX || 'info@sovdigitalgroup.com';
+const TO_EMAIL = process.env.WEB_DESIGN_INBOX || 'merchants@sovdigitalgroup.com';
 const FALLBACK = 'databosstt@gmail.com';
 
 export async function POST(req: Request) {

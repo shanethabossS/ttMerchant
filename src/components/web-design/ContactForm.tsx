@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Send, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const FALLBACK_EMAIL = 'info@sovdigitalgroup.com';
+const FALLBACK_EMAIL = 'launch@sovdigitalgroup.com';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 

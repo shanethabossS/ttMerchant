@@ -209,8 +209,8 @@ export default function HomePage() {
             </div>
             <p className="mt-5 text-xs text-muted-foreground">
               No credit card. Free quote in 24 hours.{' '}
-              <a className="font-semibold text-foreground underline decoration-[color:var(--accent)] decoration-2 underline-offset-4" href="mailto:info@sovdigitalgroup.com">
-                info@sovdigitalgroup.com
+              <a className="font-semibold text-foreground underline decoration-[color:var(--accent)] decoration-2 underline-offset-4" href="mailto:launch@sovdigitalgroup.com">
+                launch@sovdigitalgroup.com
               </a>
             </p>
           </div>
