@@ -56,6 +56,7 @@ export default function LoginPage() {
           <div><Label>Email</Label><Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-1" required placeholder="you@email.com" /></div>
           <div><Label>Password</Label><Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-1" required /></div>
           <Button type="submit" disabled={loading} className="w-full">{loading ? 'Signing in...' : 'Sign in'}</Button>
+          <p className="text-center text-sm text-muted-foreground"><Link href="/forgot-password" className="text-primary underline">Forgot your password?</Link></p>
         </form>
 
         <p className="text-center text-sm text-muted-foreground">Need an account? <Link href="/signup" className="text-primary underline">Sign up</Link></p>
