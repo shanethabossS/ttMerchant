@@ -80,6 +80,7 @@ export async function POST(req: Request) {
     }
   }
 
-  console.log('[FoodSTT founding-restaurant application] (no RESEND_API_KEY set)\n' + text);
+  // Do not log the submission body: it holds the applicant's contact details.
+  console.warn('[FoodSTT founding-restaurant application] not delivered: RESEND_API_KEY is not set');
   return NextResponse.json({ ok: true, delivered: false });
 }

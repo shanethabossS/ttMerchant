@@ -71,6 +71,7 @@ export async function POST(req: Request) {
     }
   }
 
-  console.log('[LaunchTT web-design contact] (no RESEND_API_KEY set)\n' + text);
+  // Do not log the submission body: it holds the sender's contact details.
+  console.warn('[LaunchTT web-design contact] not delivered: RESEND_API_KEY is not set');
   return NextResponse.json({ ok: true, delivered: false });
 }
