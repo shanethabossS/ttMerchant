@@ -10,12 +10,11 @@ import {
   MapPin,
   ShieldCheck,
   Sparkles,
-  Star,
   Wrench,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ContactForm from '@/components/web-design/ContactForm';
-import Portfolio from '@/components/web-design/Portfolio';
+import { PACKAGES } from '@/components/web-design/PackageCard';
 
 const SITE_URL = 'https://launchtt.com';
 const EMAIL = 'launch@sovdigitalgroup.com';
@@ -45,84 +44,6 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESC },
 };
-
-const PACKAGES = [
-  {
-    name: 'Starter Website',
-    price: 'TT$1,500 setup',
-    cadence: 'TT$150/month',
-    blurb: 'Best for small businesses that need a simple online presence.',
-    features: [
-      '1-3 page website',
-      'Mobile responsive design',
-      'Contact form',
-      'WhatsApp button',
-      'Basic SEO setup',
-      'Google Maps embed',
-      'Hosting and maintenance included in monthly fee',
-    ],
-    cta: 'Start Website',
-    href: '/start?plan=starter',
-  },
-  {
-    name: 'Business Website',
-    price: 'TT$3,500 setup',
-    cadence: 'TT$250/month',
-    blurb: 'Best for businesses that need a stronger website with service pages and lead generation.',
-    features: [
-      'Up to 6 pages',
-      'Service/product sections',
-      'Contact form',
-      'WhatsApp integration',
-      'Basic SEO',
-      'Google Maps',
-      'Image gallery',
-      'Admin-editable content where applicable',
-      'Hosting, updates, and maintenance included',
-    ],
-    cta: 'Build My Business Site',
-    href: '/start?plan=business',
-    featured: true,
-  },
-  {
-    name: 'Shop868 Store',
-    price: 'TT$2,500 setup',
-    cadence: 'TT$300/month',
-    blurb: 'Best for businesses that want to sell products online.',
-    features: [
-      'Shop868 business profile',
-      'Online storefront',
-      'Product catalog setup',
-      'WhatsApp ordering',
-      'Basic inventory/product management',
-      'Customer inquiry/order flow',
-      'Future TTPay integration when available',
-      'Hosting and support included',
-    ],
-    cta: 'Launch My Store',
-    href: '/start?plan=store',
-  },
-  {
-    name: 'Premium Digital Package',
-    price: 'TT$6,500 setup',
-    cadence: 'TT$500/month',
-    blurb: 'Best for businesses that want a complete digital system.',
-    features: [
-      'Full business website',
-      'Shop868 storefront',
-      'InvoiceTT setup',
-      'Product/service catalog',
-      'WhatsApp integration',
-      'SEO setup',
-      'Google Maps',
-      'Analytics setup',
-      'Monthly support',
-      'Priority updates',
-    ],
-    cta: 'Get Full Package',
-    href: '/start?plan=premium',
-  },
-];
 
 const STATS = [
   { num: '4', label: 'Core packages' },
@@ -221,7 +142,7 @@ export default function WebDesignPage() {
                 Start my project <ArrowRight className="size-4" />
               </Button>
             </Link>
-            <Link href="#pricing">
+            <Link href="/pricing">
               <Button size="lg" variant="outline">See pricing</Button>
             </Link>
           </div>
@@ -312,59 +233,20 @@ export default function WebDesignPage() {
         </div>
       </section>
 
-      <section id="pricing" className="border-b border-border py-16 md:py-24">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-black tracking-tight md:text-4xl">Clear pricing, no surprises.</h2>
-            <p className="mt-4 text-muted-foreground">Setup pricing plus monthly hosting, maintenance, updates, and support.</p>
-          </div>
-
-          <div className="mt-12 grid gap-5 lg:grid-cols-4">
-            {PACKAGES.map((pkg) => (
-              <PackageCard key={pkg.name} {...pkg} />
-            ))}
-          </div>
-
-          <p className="mt-6 text-center text-sm text-muted-foreground">
-            Monthly fee covers hosting, maintenance, updates, and support. Custom features, large product uploads, payment gateway setup, booking systems, and advanced integrations may require a separate quote.
-          </p>
-        </div>
-      </section>
-
-      <section id="work" className="border-b border-border py-16 md:py-24">
-        <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="mx-auto mb-10 max-w-2xl text-center">
-            <h2 className="text-3xl font-black tracking-tight md:text-4xl">A growing portfolio of T&amp;T platforms.</h2>
-            <p className="mt-4 text-muted-foreground">Every site below is live, in production, and built by the LaunchTT team.</p>
-          </div>
-          <Portfolio />
-
-          <div className="mt-14 rounded-2xl border border-border bg-card p-6 shadow-sm md:p-8">
-            <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
-              <div>
-                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300">
-                  <Sparkles className="size-3.5" /> Built with AI on the team
-                </div>
-                <h3 className="text-xl font-black tracking-tight md:text-2xl">Real engineers, real AI partners.</h3>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  LaunchTT ships fast because we pair human engineering with the best AI coding tools available.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2 md:justify-end">
-                {[
-                  { name: 'Claude Opus', by: 'Anthropic' },
-                  { name: 'Codex', by: 'OpenAI' },
-                  { name: 'MiniMax', by: 'MiniMax AI' },
-                ].map((a) => (
-                  <span key={a.name} className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/40 px-3 py-1.5 text-xs">
-                    <Star className="size-3 text-blue-500" />
-                    <span className="font-semibold">{a.name}</span>
-                    <span className="text-muted-foreground">· {a.by}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+      <section className="border-b border-border py-16 md:py-24">
+        <div className="mx-auto grid w-full max-w-6xl gap-5 px-4 md:grid-cols-2">
+          <Link href="/pricing" className="group rounded-2xl border border-border bg-card p-8 shadow-sm transition hover:border-blue-500">
+            <p className="text-xs font-bold uppercase tracking-wider text-blue-600">Pricing</p>
+            <h2 className="mt-2 text-2xl font-black tracking-tight">Clear prices, no surprises.</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Four packages from TT$1,500 setup, with one fixed monthly fee for hosting and support.</p>
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold">See pricing <ArrowRight className="size-4 transition group-hover:translate-x-1" /></span>
+          </Link>
+          <Link href="/portfolio" className="group rounded-2xl border border-border bg-card p-8 shadow-sm transition hover:border-blue-500">
+            <p className="text-xs font-bold uppercase tracking-wider text-blue-600">Portfolio</p>
+            <h2 className="mt-2 text-2xl font-black tracking-tight">Live sites we have built.</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Every site is live and in production across Trinidad &amp; Tobago.</p>
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold">See our work <ArrowRight className="size-4 transition group-hover:translate-x-1" /></span>
+          </Link>
         </div>
       </section>
 
@@ -414,46 +296,6 @@ export default function WebDesignPage() {
         </div>
       </section>
     </div>
-  );
-}
-
-function PackageCard({
-  name,
-  price,
-  cadence,
-  blurb,
-  features,
-  cta,
-  href,
-  featured,
-}: {
-  name: string;
-  price: string;
-  cadence: string;
-  blurb: string;
-  features: string[];
-  cta: string;
-  href: string;
-  featured?: boolean;
-}) {
-  return (
-    <article className={`flex flex-col rounded-2xl border bg-card p-6 shadow-sm ${featured ? 'border-blue-500 ring-2 ring-blue-500/15' : 'border-border'}`}>
-      <p className={`text-sm font-bold uppercase tracking-wider ${featured ? 'text-blue-600' : 'text-muted-foreground'}`}>{name}</p>
-      <p className="mt-2 text-4xl font-black">{price}</p>
-      <p className="mt-1 text-sm text-muted-foreground">{cadence}</p>
-      <p className="mt-4 text-sm text-muted-foreground">{blurb}</p>
-      <ul className="mt-5 space-y-2 text-sm">
-        {features.map((feature) => (
-          <li key={feature} className="flex gap-2">
-            <CheckCircle2 className="size-4 shrink-0 text-green-600" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <Link href={href} className="mt-6">
-        <Button className="w-full" variant={featured ? 'default' : 'outline'}>{cta}</Button>
-      </Link>
-    </article>
   );
 }
 

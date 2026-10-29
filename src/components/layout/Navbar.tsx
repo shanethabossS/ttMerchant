@@ -48,8 +48,14 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          <Link href="/web-design#services" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+          <Link href="/web-design" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             Services
+          </Link>
+          <Link href="/pricing" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Pricing
+          </Link>
+          <Link href="/portfolio" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
+            Portfolio
           </Link>
           <Link href="/food" className="text-sm font-semibold text-muted-foreground transition hover:text-foreground">
             For Restaurants

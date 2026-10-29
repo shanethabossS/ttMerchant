@@ -146,11 +146,28 @@ export default function SignupPage() {
       <div className="mx-auto w-full max-w-4xl px-4 py-10">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-black tracking-tight md:text-4xl">Sign up</h1>
-          <p className="mt-3 text-sm text-muted-foreground md:text-base">
-            Start with the path that matches what you are trying to do. Personal accounts are lighter.
-            Business accounts open the full LaunchTT onboarding flow.
+          <p className="mt-3 text-base text-muted-foreground md:text-lg">
+            It takes about two minutes. Pick the choice that sounds most like you. You can change your mind later.
           </p>
         </div>
+
+        <ol className="mx-auto mt-6 grid max-w-3xl gap-3 sm:grid-cols-3">
+          {[
+            ['1', 'Choose Personal or Business', 'Personal is for you. Business is for a shop, service or company.'],
+            ['2', 'Fill in a short form', 'Your name, email, phone and a password. Nothing else to start.'],
+            ['3', 'Verify when you are ready', 'We explain every step. You only need it before money moves.'],
+          ].map(([n, t, d]) => (
+            <li key={n} className="rounded-2xl border border-border bg-muted/30 p-4 text-left">
+              <span className="flex size-8 items-center justify-center rounded-full bg-primary text-sm font-black text-primary-foreground">{n}</span>
+              <p className="mt-2 text-base font-bold">{t}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{d}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-muted-foreground">
+          Why we ask: it keeps scammers out and customers safe.{' '}
+          <Link href="/kyc" className="text-primary underline">Read how verification works</Link>
+        </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <button

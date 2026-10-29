@@ -26,8 +26,14 @@ export function MobileMenu() {
         <div className="absolute left-0 right-0 top-full z-40 max-h-[85vh] overflow-y-auto border-b border-border bg-background shadow-lg">
           <div className="container mx-auto flex flex-col gap-4 px-4 py-4">
             <div className="grid grid-cols-2 gap-2">
-              <Link href="/web-design#services" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
+              <Link href="/web-design" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 Services
+              </Link>
+              <Link href="/pricing" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
+                Pricing
+              </Link>
+              <Link href="/portfolio" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
+                Portfolio
               </Link>
               <Link href="/food" onClick={() => setOpen(false)} className="rounded-xl border border-border bg-card px-3 py-3 text-sm font-semibold text-foreground transition hover:bg-muted">
                 For Restaurants
