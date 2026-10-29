@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { requireStaff } from '@/lib/intake/require-staff';
 import { maybeSendWhatsApp, sendEmail } from '@/lib/notifications';
 import { getLeadById, updateLeadStatus, type QueueStatus } from '@/lib/intake/store';
 
@@ -12,6 +13,8 @@ const VALID_QUEUE = new Set<QueueStatus>([
 ]);
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const denied = await requireStaff(req);
+  if (denied) return denied;
   const { id } = await params;
   const body = await req.json().catch(() => null);
   const toStatus = String(body?.queue_status || '').trim() as QueueStatus;
