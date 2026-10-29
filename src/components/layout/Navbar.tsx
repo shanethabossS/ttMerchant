@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/auth-context';
 import { MobileMenu } from './MobileMenu';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { SOV_LIVE_SITES } from '@/lib/sov-ecosystem';
+import { NetworkBar as SovNetworkBar } from '../SovNetworkBar';
 import { UserDashboardAccordion } from './UserDashboardAccordion';
 
 const fraunces = Fraunces({ subsets: ['latin'], weight: ['600', '700'], variable: '--font-display', display: 'swap' });
@@ -17,22 +17,7 @@ export function Navbar() {
 
   return (
     <nav className={`${fraunces.variable} sticky top-0 z-50 w-full border-b border-border bg-background/92 backdrop-blur`}>
-      <div className="sov-network-bar">
-        <div className="sov-network-chips">
-          {SOV_LIVE_SITES.map((site) => (
-            <a
-              key={site.slug}
-              href={site.url}
-              className={`sov-network-chip ${site.slug === 'sovconnect' ? 'sov-network-chip-current' : ''}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={site.description}
-            >
-              {site.name}
-            </a>
-          ))}
-        </div>
-      </div>
+      <SovNetworkBar currentSite="launchtt" />
 
       <div className="container mx-auto flex min-h-16 items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex min-w-0 items-center gap-3">
