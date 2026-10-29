@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { BANK_TRANSFER as B, SITE_NAME, SITE_CODE } from '@/lib/bank-transfer';
+import { CardPaymentsSoon } from '@/components/CardPaymentsSoon';
 
 export const metadata: Metadata = {
   title: { absolute: `Pay by bank transfer | ${SITE_NAME}` },
@@ -22,6 +23,7 @@ export default function PayByBankPage() {
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '32px 16px 64px' }}>
       <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>Pay by bank transfer</h1>
+      <CardPaymentsSoon />
       <p style={{ marginBottom: 20, lineHeight: 1.55 }}>
         Online card payments are coming soon — we are finishing the setup. Until then you can pay {SITE_NAME} directly
         from your own online banking.

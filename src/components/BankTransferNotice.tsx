@@ -24,10 +24,10 @@ export default function BankTransferNotice() {
   if (!visible) return null;
 
   return (
-    <div role="status" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8, padding: '8px 44px 8px 14px', background: '#0b3b2e', color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.16)', fontSize: 13, fontWeight: 600, textAlign: 'center', lineHeight: 1.35 }}>
-      <span>Online card payments are coming soon. For now you can pay by bank transfer.</span>
-      <a href="/pay-by-bank" style={{ color: '#fff', textDecoration: 'underline', whiteSpace: 'nowrap' }}>How to pay</a>
-      <button type="button" aria-label="Dismiss payment notice" onClick={() => { writeDismissed(); setVisible(false); }} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', width: 24, height: 24, border: '1px solid rgba(255,255,255,0.35)', borderRadius: 999, background: 'rgba(255,255,255,0.14)', color: '#fff', cursor: 'pointer' }}>x</button>
+    <div role="status" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8, padding: '8px 44px 8px 14px', background: '#fde047', color: '#1a1a1a', borderBottom: '2px solid #d97706', fontSize: 14, fontWeight: 700, textAlign: 'center', lineHeight: 1.35 }}>
+      <span><strong style={{ color: '#b91c1c' }}>CARD PAYMENTS: COMING SOON.</strong> For now, <strong style={{ color: '#065f46' }}>pay by bank transfer</strong>.</span>
+      <a href="/pay-by-bank" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'underline', whiteSpace: 'nowrap' }}>How to pay</a>
+      <button type="button" aria-label="Dismiss payment notice" onClick={() => { writeDismissed(); setVisible(false); }} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', width: 24, height: 24, border: '1px solid rgba(0,0,0,0.45)', borderRadius: 999, background: 'rgba(0,0,0,0.08)', color: '#1a1a1a', cursor: 'pointer' }}>x</button>
     </div>
   );
 }
