@@ -5,6 +5,7 @@ import { AuthProvider } from '@/lib/auth-context';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
+import BankTransferNotice from '@/components/BankTransferNotice';
 
 const themeScript = `(function(){try{var t=localStorage.getItem('sov-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();`;
 const siteUrl = 'https://launchtt.com';
@@ -161,6 +162,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="flex min-h-full flex-col">
         <AuthProvider>
+          <BankTransferNotice />
           <Navbar />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
